@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client Contracts Management</title>
+
+    <!-- Google Font for a Modern Look -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Global Styling */
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f4f6f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        /* Navigation Button Styling */
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .nav-button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .nav-button:hover {
+            background-color: #45a049;
+        }
+
+        .active {
+            background-color: #007BFF;
+        }
+
+        /* Table Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eaeaea;
+        }
+
+        th {
+            background-color: #f7f8fa;
+            color: #555;
+            font-weight: 500;
+        }
+
+        tr:hover {
+            background-color: #f9fbfd;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .edit-btn, .confirm-btn, .undo-btn {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .edit-btn {
+            background-color: #FFC107;
+            color: #fff;
+        }
+
+        .confirm-btn {
+            background-color: #28A745;
+            color: #fff;
+        }
+
+        .undo-btn {
+            background-color: #DC3545;
+            color: #fff;
+        }
+
+        .edit-btn:hover {
+            background-color: #E0A800;
+        }
+
+        .confirm-btn:hover {
+            background-color: #218838;
+        }
+
+        .undo-btn:hover {
+            background-color: #C82333;
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 100;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content h3 {
+            margin-top: 0;
+            font-weight: 500;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .modal-content label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: 500;
+            color: #555;
+        }
+
+        .modal-content input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #eaeaea;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        /* Button Styling */
+        .modal-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .modal-buttons button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        .save-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .cancel-btn {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Client Contracts Management</h2>
+
+<div class="nav-buttons">
+    <button class="nav-button" id="uncategorizedBtn" onclick="showSection('uncategorized')">Uncategorized</button>
+    <button class="nav-button" id="categorizedBtn" onclick="showSection('categorized')">Categorized</button>
+    <button class="nav-button" id="pausedBtn" onclick="showSection('paused')">Paused</button>
+    <button class="nav-button" id="mrrBtn" onclick="showSection('mrr')">MRR</button>
+</div>
+
+<!-- Add Client Button -->
+<div style="text-align: center; margin-bottom: 20px;">
+    <button class="nav-button" onclick="openAddClientForm()">Add Client</button>
+</div>
+
+<div id="uncategorized" style="display: block;">
+    <h3>Uncategorized Contracts</h3>
+    <table id="uncategorizedTable">
+        <tr>
+            <th>Client</th>
+            <th>Description</th>
+            <th>Paid Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount ($)</th>
+            <th>Actions</th>
+        </tr>
+    </table>
+</div>
+
+<div id="categorized" style="display: none;">
+    <h3>Categorized Contracts</h3>
+    <table id="categorizedTable">
+        <tr>
+            <th>Client</th>
+            <th>Description</th>
+            <th>Paid Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount ($)</th>
+            <th>Actions</th>
+        </tr>
+    </table>
+</div>
+
+<div id="paused" style="display: none;">
+    <h3>Paused Contracts</h3>
+    <table id="pausedTable">
+        <tr>
+            <th>Client</th>
+            <th>Description</th>
+            <th>Paid Date</th>
+            <th>Start Date</th>
+            <th>End Date</th>
+            <th>Amount ($)</th>
+        </tr>
+    </table>
+</div>
+
+<div id="mrr" style="display: none;">
+    <h3>Monthly Recurring Revenue (MRR)</h3>
+    <table id="mrrTable">
+        <thead>
+            <tr>
+                <th>Client</th>
+                <th>Jan 2025</th>
+                <th>Feb 2025</th>
+                <th>Mar 2025</th>
+                <th>Apr 2025</th>
+                <th>May 2025</th>
+                <th>Jun 2025</th>
+                <th>Jul 2025</th>
+                <th>Aug 2025</th>
+                <th>Sep 2025</th>
+                <th>Oct 2025</th>
+                <th>Nov 2025</th>
+                <th>Dec 2025</th>
+            </tr>
+        </thead>
+        <tbody id="mrrBody">
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Client Modal -->
+<div class="modal" id="addClientModal">
+    <div class="modal-content">
+        <h3>Add New Client</h3>
+        <form id="addClientForm">
+            <label for="clientName">Client Name:</label>
+            <input type="text" id="clientName" name="clientName" required>
+
+            <label for="description">Description:</label>
+            <input type="text" id="description" name="description" required>
+
+            <label for="paidDate">Paid Date:</label>
+            <input type="date" id="paidDate" name="paidDate" required>
+
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate" required>
+
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate" required>
+
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="amount" required>
+
+            <div class="modal-buttons">
+                <button type="button" class="cancel-btn" onclick="closeAddClientForm()">Cancel</button>
+                <button type="button" class="save-btn" onclick="addClient()">Save</button>
+            </div>
+        </form>
+    </div>
+</div><script>
+    function showSection(sectionId) {
+        const sections = ['uncategorized', 'categorized', 'paused', 'mrr'];
+        const buttons = ['uncategorizedBtn', 'categorizedBtn', 'pausedBtn', 'mrrBtn'];
+
+        sections.forEach(sec => {
+            document.getElementById(sec).style.display = sec === sectionId ? 'block' : 'none';
+        });
+
+        buttons.forEach(btn => {
+            document.getElementById(btn).classList.remove('active');
+        });
+
+        document.getElementById(sectionId + 'Btn').classList.add('active');
+    }
+
+    function openAddClientForm() {
+        document.getElementById('addClientModal').style.display = 'flex';
+    }
+
+    function closeAddClientForm() {
+        document.getElementById('addClientModal').style.display = 'none';
+    }
+
+    function addClient() {
+        const clientName = document.getElementById('clientName').value;
+        const description = document.getElementById('description').value;
+        const paidDate = document.getElementById('paidDate').value;
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+        const amount = parseFloat(document.getElementById('amount').value);
+
+        if (!clientName || !description || !paidDate || !startDate || !endDate || isNaN(amount) || amount <= 0) {
+            alert('Please fill out all fields correctly.');
+            return;
+        }
+
+        const table = document.getElementById('categorizedTable');
+        const newRow = table.insertRow();
+
+        newRow.innerHTML = `
+            <td>${clientName}</td>
+            <td>${description}</td>
+            <td>${paidDate}</td>
+            <td>${startDate}</td>
+            <td>${endDate}</td>
+            <td>${amount.toFixed(2)}</td>
+            <td class="action-buttons">
+                <button class="undo-btn" onclick="moveToUncategorized(this)">Undo</button>
+            </td>
+        `;
+
+        closeAddClientForm();
+        calculateMRR();
+    }
+
+    function moveToUncategorized(button) {
+        const row = button.closest('tr');
+        document.getElementById('uncategorizedTable').appendChild(row);
+        row.querySelector('.action-buttons').innerHTML = `
+            <button class="edit-btn" onclick="openEditClientForm(this)">Edit</button>
+            <button class="confirm-btn" onclick="moveToCategorized(this)">Confirm</button>
+        `;
+    }
+
+    function openEditClientForm(button) {
+        const row = button.closest('tr');
+
+        document.getElementById('editClientName').value = row.cells[0].textContent;
+        document.getElementById('editDescription').value = row.cells[1].textContent;
+        document.getElementById('editPaidDate').value = row.cells[2].textContent;
+        document.getElementById('editStartDate').value = row.cells[3].textContent;
+        document.getElementById('editEndDate').value = row.cells[4].textContent;
+        document.getElementById('editAmount').value = row.cells[5].textContent;
+
+        document.getElementById('editClientModal').style.display = 'flex';
+    }
+
+    function closeEditClientForm() {
+        document.getElementById('editClientModal').style.display = 'none';
+    }
+
+    function saveEditClient() {
+        const clientName = document.getElementById('editClientName').value;
+        const description = document.getElementById('editDescription').value;
+        const paidDate = document.getElementById('editPaidDate').value;
+        const startDate = document.getElementById('editStartDate').value;
+        const endDate = document.getElementById('editEndDate').value;
+        const amount = parseFloat(document.getElementById('editAmount').value);
+
+        if (!clientName || !description || !paidDate || !startDate || !endDate || isNaN(amount) || amount <= 0) {
+            alert('Please fill out all fields correctly.');
+            return;
+        }
+
+        const row = document.querySelector('#uncategorizedTable tr:last-child');
+        row.cells[0].textContent = clientName;
+        row.cells[1].textContent = description;
+        row.cells[2].textContent = paidDate;
+        row.cells[3].textContent = startDate;
+        row.cells[4].textContent = endDate;
+        row.cells[5].textContent = amount.toFixed(2);
+
+        closeEditClientForm();
+    }
+
+    function moveToCategorized(button) {
+        const row = button.closest('tr');
+        document.getElementById('categorizedTable').appendChild(row);
+        row.querySelector('.action-buttons').innerHTML = `
+            <button class="undo-btn" onclick="moveToUncategorized(this)">Undo</button>
+        `;
+        calculateMRR();
+    }
+
+    function calculateMRR() {
+        const categorizedTable = document.getElementById('categorizedTable');
+        const mrrBody = document.getElementById('mrrBody');
+        mrrBody.innerHTML = '';
+
+        const clients = [];
+        const monthTotals = new Array(12).fill(0);
+
+        for (let i = 1; i < categorizedTable.rows.length; i++) {
+            const row = categorizedTable.rows[i];
+            const clientName = row.cells[0].textContent;
+            const startDate = new Date(row.cells[3].textContent);
+            const endDate = new Date(row.cells[4].textContent);
+            const amount = parseFloat(row.cells[5].textContent);
+
+            const startYear = startDate.getFullYear();
+            const endYear = endDate.getFullYear();
+
+            const monthlyAmount = amount / 12;
+
+            const clientData = new Array(12).fill(0);
+
+            for (let month = 0; month < 12; month++) {
+                const currentDate = new Date(2025, month, 1);
+                if (currentDate >= startDate && currentDate <= endDate) {
+                    clientData[month] = monthlyAmount;
+                    monthTotals[month] += monthlyAmount;
+                }
+            }
+
+            clients.push({ name: clientName, data: clientData });
+        }
+
+        clients.forEach(client => {
+            const row = document.createElement('tr');
+            row.innerHTML = `<td>${client.name}</td>` + client.data.map(amount => `<td>${amount.toFixed(2)}</td>`).join('');
+            mrrBody.appendChild(row);
+        });
+
+        const totalRow = document.createElement('tr');
+        totalRow.innerHTML = '<td>Net Profit</td>' + monthTotals.map(total => `<td>${total.toFixed(2)}</td>`).join('');
+        mrrBody.appendChild(totalRow);
+    }
+</script>
+
+</body>
+</html>
