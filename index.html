@@ -3,20 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Premier Interior Painting | Transform Your Space</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <title>RS Painting | Interior Painting Scarborough & Toronto GTA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --gold: #c9a96e;
-      --gold-light: #e8d5b0;
-      --dark: #1a1a2e;
-      --charcoal: #2d2d44;
-      --cream: #faf8f4;
-      --white: #ffffff;
-      --text: #444;
-      --light-gray: #f5f3ef;
+      --red:        #c0000c;
+      --red-dark:   #8a0008;
+      --red-light:  #e8222e;
+      --silver:     #c8c8c8;
+      --silver-lt:  #e8e8e8;
+      --chrome:     #d0d0d0;
+      --dark:       #111111;
+      --charcoal:   #1e1e1e;
+      --off-white:  #f5f5f5;
+      --white:      #ffffff;
+      --text:       #333333;
     }
 
     html { scroll-behavior: smooth; }
@@ -36,50 +39,67 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 18px 60px;
-      background: rgba(26, 26, 46, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      padding: 14px 60px;
+      background: rgba(10, 10, 10, 0.96);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--red);
       transition: padding 0.3s;
     }
 
-    .nav-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--gold);
-      letter-spacing: 1px;
+    .nav-logo img {
+      height: 52px;
+      width: auto;
+      display: block;
+      filter: drop-shadow(0 0 6px rgba(192,0,12,0.5));
     }
 
-    .nav-logo span { color: var(--white); }
+    /* Fallback text logo if image missing */
+    .nav-logo-fallback {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      color: var(--silver);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-fallback span { color: var(--red); }
 
     .nav-links {
       display: flex;
-      gap: 36px;
+      gap: 34px;
       list-style: none;
+      align-items: center;
     }
 
     .nav-links a {
-      color: rgba(255,255,255,0.85);
+      color: var(--silver);
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       font-weight: 500;
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
       transition: color 0.2s;
     }
 
-    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover { color: var(--red-light); }
 
     .nav-cta {
-      background: var(--gold);
-      color: var(--dark) !important;
+      background: var(--red) !important;
+      color: var(--white) !important;
       padding: 10px 24px;
-      border-radius: 30px;
-      font-weight: 600 !important;
+      border-radius: 4px;
+      font-weight: 700 !important;
+      letter-spacing: 1px !important;
+      border: none;
       transition: background 0.2s, transform 0.2s !important;
     }
 
-    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+    .nav-cta:hover {
+      background: var(--red-light) !important;
+      transform: translateY(-1px);
+    }
 
     /* ── HERO ── */
     .hero {
@@ -87,120 +107,155 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       position: relative;
-      overflow: hidden;
     }
 
-    .hero-image-side {
+    .hero-img-side {
       position: relative;
       background: url('https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
     }
 
-    .hero-image-side::after {
+    .hero-img-side::after {
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(to right, rgba(26,26,46,0.4), transparent);
+      background: linear-gradient(to right, rgba(10,10,10,0.55), rgba(10,10,10,0.1));
+    }
+
+    /* Red diagonal stripe accent */
+    .hero-img-side::before {
+      content: '';
+      position: absolute;
+      top: 0; right: -1px;
+      width: 60px;
+      height: 100%;
+      background: linear-gradient(to bottom right, transparent 50%, transparent 50%);
+      z-index: 1;
     }
 
     .hero-content-side {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      padding: 120px 60px 60px 60px;
-      background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%);
+      padding: 120px 56px 60px 52px;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Background texture lines */
+    .hero-content-side::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(192,0,12,0.12) 0%, transparent 65%);
+      pointer-events: none;
     }
 
     .hero-badge {
-      display: inline-block;
-      background: rgba(201, 169, 110, 0.15);
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(192,0,12,0.12);
+      border: 1px solid var(--red);
+      color: var(--red-light);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
       text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 20px;
-      margin-bottom: 24px;
+      padding: 6px 14px;
+      border-radius: 3px;
+      margin-bottom: 22px;
       width: fit-content;
     }
 
+    .hero-badge::before { content: '📍'; font-size: 0.85rem; }
+
     .hero-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(2rem, 3.5vw, 3rem);
-      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.6rem, 4vw, 3.8rem);
       color: var(--white);
-      line-height: 1.2;
-      margin-bottom: 16px;
+      line-height: 1.05;
+      letter-spacing: 2px;
+      margin-bottom: 14px;
     }
 
     .hero-title em {
       font-style: normal;
-      color: var(--gold);
+      color: var(--red-light);
+      display: block;
     }
 
     .hero-sub {
-      color: rgba(255,255,255,0.7);
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 36px;
+      color: var(--silver);
+      font-size: 0.95rem;
+      line-height: 1.75;
+      margin-bottom: 32px;
       font-weight: 300;
+      max-width: 420px;
     }
 
     /* ── QUOTE FORM ── */
     .quote-form {
       background: var(--white);
-      border-radius: 16px;
-      padding: 32px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border-radius: 8px;
+      padding: 28px 30px 24px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.5), 0 0 0 1px rgba(192,0,12,0.2);
+      position: relative;
+    }
+
+    .quote-form::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--red-dark), var(--red-light), var(--red-dark));
+      border-radius: 8px 8px 0 0;
     }
 
     .quote-form h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.3rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.5rem;
+      letter-spacing: 2px;
       color: var(--dark);
-      margin-bottom: 6px;
+      margin-bottom: 4px;
     }
 
-    .quote-form p {
-      font-size: 0.82rem;
+    .quote-form > p {
+      font-size: 0.8rem;
       color: #888;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
     .form-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 12px;
+      gap: 10px;
+      margin-bottom: 10px;
     }
 
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
-
+    .form-group { display: flex; flex-direction: column; gap: 4px; }
     .form-group.full { grid-column: span 2; }
 
     .form-group label {
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.7rem;
+      font-weight: 700;
       color: var(--charcoal);
-      letter-spacing: 0.5px;
+      letter-spacing: 1px;
       text-transform: uppercase;
     }
 
     .form-group input,
     .form-group select,
     .form-group textarea {
-      padding: 11px 14px;
-      border: 1.5px solid #e0dbd2;
-      border-radius: 8px;
+      padding: 10px 12px;
+      border: 1.5px solid #ddd;
+      border-radius: 4px;
       font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
+      font-size: 0.86rem;
       color: var(--dark);
-      background: var(--cream);
+      background: #fafafa;
       transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
     }
@@ -208,185 +263,164 @@
     .form-group input:focus,
     .form-group select:focus,
     .form-group textarea:focus {
-      border-color: var(--gold);
-      box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+      border-color: var(--red);
+      box-shadow: 0 0 0 3px rgba(192,0,12,0.1);
       background: var(--white);
     }
 
-    .form-group textarea { resize: vertical; min-height: 70px; }
+    .form-group textarea { resize: vertical; min-height: 64px; }
 
     .submit-btn {
       width: 100%;
       padding: 14px;
-      background: linear-gradient(135deg, var(--gold), #b8935a);
-      color: var(--dark);
+      background: linear-gradient(135deg, var(--red-dark), var(--red-light));
+      color: var(--white);
       border: none;
-      border-radius: 8px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.95rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
+      border-radius: 4px;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 2px;
       cursor: pointer;
-      margin-top: 8px;
+      margin-top: 10px;
       transition: transform 0.2s, box-shadow 0.2s;
     }
 
     .submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(201,169,110,0.4);
+      box-shadow: 0 8px 24px rgba(192,0,12,0.45);
     }
 
     .form-note {
       text-align: center;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       color: #aaa;
-      margin-top: 10px;
+      margin-top: 8px;
     }
 
-    /* ── SUCCESS MESSAGE ── */
     .success-msg {
       display: none;
       text-align: center;
       padding: 20px;
-      color: #2d6a4f;
-      background: #d8f3dc;
-      border-radius: 8px;
+      color: #155724;
+      background: #d4edda;
+      border-radius: 6px;
       font-weight: 600;
-      margin-top: 12px;
+      font-size: 0.92rem;
+      margin-top: 10px;
     }
 
     /* ── TRUST BAR ── */
     .trust-bar {
-      background: var(--cream);
-      padding: 28px 60px;
+      background: var(--charcoal);
+      padding: 26px 60px;
       display: flex;
       justify-content: center;
-      gap: 60px;
-      border-bottom: 1px solid #ede8df;
+      gap: 56px;
       flex-wrap: wrap;
+      border-bottom: 1px solid rgba(192,0,12,0.3);
     }
 
     .trust-item {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
-    .trust-icon {
-      font-size: 1.6rem;
-    }
+    .trust-icon { font-size: 1.7rem; }
 
     .trust-text strong {
       display: block;
       font-size: 1.1rem;
       font-weight: 700;
-      color: var(--dark);
+      color: var(--white);
     }
 
     .trust-text span {
-      font-size: 0.78rem;
-      color: #888;
-      font-weight: 400;
+      font-size: 0.75rem;
+      color: var(--silver);
     }
 
-    /* ── SECTIONS ── */
-    section { padding: 90px 60px; }
+    /* ── SECTION BASICS ── */
+    section { padding: 88px 60px; }
 
     .section-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 12px;
+      color: var(--red);
+      margin-bottom: 10px;
     }
 
     .section-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      letter-spacing: 2px;
       color: var(--dark);
-      line-height: 1.25;
-      margin-bottom: 16px;
+      line-height: 1.1;
+      margin-bottom: 14px;
     }
 
     .section-sub {
-      color: #777;
-      font-size: 1rem;
-      line-height: 1.7;
-      max-width: 560px;
+      color: #666;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      max-width: 540px;
     }
 
-    .section-header { margin-bottom: 56px; }
+    .section-header { margin-bottom: 52px; }
 
     /* ── SERVICES ── */
-    #services { background: var(--white); }
+    #services { background: var(--off-white); }
 
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 28px;
+      gap: 22px;
     }
 
     .service-card {
-      background: var(--cream);
-      border-radius: 16px;
-      padding: 36px 28px;
-      border: 1px solid #ede8df;
-      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      background: var(--white);
+      border-radius: 6px;
+      padding: 32px 24px;
+      border: 1px solid #e5e5e5;
+      border-top: 4px solid var(--red);
+      transition: transform 0.3s, box-shadow 0.3s;
       position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px;
-      height: 100%;
-      background: var(--gold);
-      transform: scaleY(0);
-      transition: transform 0.3s;
-      transform-origin: bottom;
     }
 
     .service-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-5px);
       box-shadow: 0 16px 48px rgba(0,0,0,0.1);
-      border-color: var(--gold-light);
     }
 
-    .service-card:hover::before { transform: scaleY(1); }
-
-    .service-icon {
-      font-size: 2.2rem;
-      margin-bottom: 18px;
-    }
+    .service-icon { font-size: 2rem; margin-bottom: 14px; }
 
     .service-card h3 {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.25rem;
+      letter-spacing: 1.5px;
       color: var(--dark);
       margin-bottom: 10px;
     }
 
     .service-card p {
-      font-size: 0.88rem;
-      color: #777;
+      font-size: 0.86rem;
+      color: #666;
       line-height: 1.65;
     }
 
     /* ── GALLERY ── */
-    #gallery { background: var(--light-gray); }
+    #gallery { background: var(--white); }
 
     .gallery-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      grid-template-rows: auto;
-      gap: 16px;
+      gap: 14px;
     }
 
     .gallery-item {
-      border-radius: 12px;
+      border-radius: 6px;
       overflow: hidden;
       position: relative;
       cursor: pointer;
@@ -403,163 +437,226 @@
       object-fit: cover;
       display: block;
       transition: transform 0.5s;
-      min-height: 220px;
+      min-height: 200px;
     }
 
-    .gallery-item:first-child img { min-height: 460px; }
+    .gallery-item:first-child img { min-height: 440px; }
 
     .gallery-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to top, rgba(26,26,46,0.7), transparent);
+      background: linear-gradient(to top, rgba(10,10,10,0.75) 0%, rgba(192,0,12,0.15) 100%);
       opacity: 0;
       transition: opacity 0.3s;
       display: flex;
       align-items: flex-end;
-      padding: 20px;
+      padding: 18px;
     }
 
     .gallery-overlay span {
       color: var(--white);
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 600;
       letter-spacing: 0.5px;
+      border-left: 3px solid var(--red);
+      padding-left: 10px;
     }
 
-    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:hover img { transform: scale(1.06); }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
 
     /* ── PROCESS ── */
     #process { background: var(--dark); }
+
+    #process .section-label { color: var(--red-light); }
     #process .section-title { color: var(--white); }
-    #process .section-sub { color: rgba(255,255,255,0.6); }
+    #process .section-sub { color: var(--silver); }
 
     .process-steps {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px;
       position: relative;
-      margin-top: 20px;
     }
 
     .process-steps::before {
       content: '';
       position: absolute;
-      top: 36px;
-      left: 10%;
-      right: 10%;
-      height: 1px;
-      background: rgba(201,169,110,0.3);
+      top: 34px;
+      left: 8%;
+      right: 8%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), var(--red-light), var(--red), transparent);
     }
 
-    .step {
-      text-align: center;
-      padding: 0 20px;
-      position: relative;
-    }
+    .step { text-align: center; padding: 0 16px; }
 
     .step-number {
-      width: 72px;
-      height: 72px;
+      width: 68px; height: 68px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--gold), #b8935a);
-      color: var(--dark);
-      font-family: 'Playfair Display', serif;
-      font-size: 1.4rem;
-      font-weight: 700;
+      background: linear-gradient(135deg, var(--red-dark), var(--red-light));
+      color: var(--white);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 1px;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin: 0 auto 24px;
+      margin: 0 auto 20px;
       position: relative;
       z-index: 1;
+      box-shadow: 0 4px 20px rgba(192,0,12,0.4);
     }
 
     .step h4 {
-      font-family: 'Playfair Display', serif;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.05rem;
+      letter-spacing: 1.5px;
       color: var(--white);
-      font-size: 1rem;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .step p {
-      font-size: 0.82rem;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.8rem;
+      color: var(--silver);
       line-height: 1.6;
     }
 
     /* ── TESTIMONIALS ── */
-    #testimonials { background: var(--cream); }
+    #testimonials { background: var(--charcoal); }
+
+    #testimonials .section-title { color: var(--white); }
+    #testimonials .section-sub { color: var(--silver); }
 
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
     }
 
     .testimonial-card {
-      background: var(--white);
-      border-radius: 16px;
-      padding: 32px;
-      border: 1px solid #ede8df;
+      background: var(--dark);
+      border-radius: 6px;
+      padding: 28px;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-top: 3px solid var(--red);
       position: relative;
     }
 
     .stars {
-      color: var(--gold);
+      color: var(--red-light);
       font-size: 1rem;
-      margin-bottom: 14px;
-      letter-spacing: 2px;
+      margin-bottom: 12px;
+      letter-spacing: 3px;
     }
 
     .testimonial-card blockquote {
-      font-size: 0.92rem;
-      color: #555;
+      font-size: 0.88rem;
+      color: var(--silver-lt);
       line-height: 1.75;
       font-style: italic;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
     }
 
-    .reviewer {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
+    .reviewer { display: flex; align-items: center; gap: 12px; }
 
     .reviewer-avatar {
-      width: 44px;
-      height: 44px;
+      width: 42px; height: 42px;
       border-radius: 50%;
       object-fit: cover;
+      border: 2px solid var(--red);
     }
 
     .reviewer-info strong {
       display: block;
-      font-size: 0.88rem;
-      color: var(--dark);
+      font-size: 0.85rem;
+      color: var(--white);
       font-weight: 600;
     }
 
-    .reviewer-info span {
-      font-size: 0.78rem;
-      color: #aaa;
-    }
+    .reviewer-info span { font-size: 0.75rem; color: #888; }
 
     .quote-mark {
       position: absolute;
-      top: 20px;
-      right: 24px;
-      font-family: 'Playfair Display', serif;
+      top: 16px; right: 20px;
+      font-family: 'Bebas Neue', sans-serif;
       font-size: 5rem;
-      color: var(--gold-light);
+      color: rgba(192,0,12,0.15);
       line-height: 1;
       user-select: none;
     }
 
+    /* ── SERVICE AREA ── */
+    #area { background: var(--off-white); }
+
+    .area-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .area-map-placeholder {
+      background: var(--dark);
+      border-radius: 8px;
+      padding: 48px 32px;
+      text-align: center;
+      border: 2px solid var(--red);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .area-map-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(192,0,12,0.12) 0%, transparent 70%);
+    }
+
+    .map-icon { font-size: 3.5rem; margin-bottom: 16px; }
+
+    .area-map-placeholder h4 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.8rem;
+      letter-spacing: 2px;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+
+    .area-map-placeholder p {
+      color: var(--silver);
+      font-size: 0.88rem;
+    }
+
+    .area-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    .area-tag {
+      background: var(--white);
+      border: 1.5px solid #ddd;
+      border-left: 4px solid var(--red);
+      color: var(--dark);
+      padding: 7px 14px;
+      border-radius: 3px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .area-tag.primary {
+      background: var(--red);
+      border-color: var(--red);
+      color: var(--white);
+    }
+
     /* ── CTA BANNER ── */
     .cta-banner {
-      background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 60%, #16213e 100%);
-      padding: 80px 60px;
+      background: linear-gradient(135deg, var(--red-dark) 0%, var(--red) 50%, #a00008 100%);
+      padding: 76px 60px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -568,113 +665,99 @@
     .cta-banner::before {
       content: '';
       position: absolute;
-      top: -50%;
+      top: -60%;
       left: 50%;
       transform: translateX(-50%);
-      width: 600px;
-      height: 600px;
+      width: 700px; height: 700px;
       border-radius: 50%;
-      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+      background: radial-gradient(circle, rgba(255,255,255,0.07) 0%, transparent 70%);
     }
 
     .cta-banner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 3px;
       color: var(--white);
-      margin-bottom: 14px;
+      margin-bottom: 10px;
     }
 
     .cta-banner p {
-      color: rgba(255,255,255,0.65);
-      margin-bottom: 32px;
-      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 30px;
+      font-size: 0.98rem;
     }
 
     .cta-btn {
       display: inline-block;
-      padding: 16px 44px;
-      background: linear-gradient(135deg, var(--gold), #b8935a);
-      color: var(--dark);
-      font-weight: 700;
-      font-size: 1rem;
-      border-radius: 40px;
+      padding: 15px 48px;
+      background: var(--white);
+      color: var(--red-dark);
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      border-radius: 4px;
       text-decoration: none;
       transition: transform 0.2s, box-shadow 0.2s;
-      letter-spacing: 0.5px;
     }
 
     .cta-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(201,169,110,0.4);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.3);
     }
 
     /* ── FOOTER ── */
     footer {
-      background: var(--dark);
-      color: rgba(255,255,255,0.5);
-      padding: 40px 60px;
+      background: #0a0a0a;
+      padding: 36px 60px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
-      border-top: 1px solid rgba(255,255,255,0.08);
+      gap: 14px;
+      border-top: 2px solid var(--red);
     }
 
-    footer .footer-logo {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
-      color: var(--gold);
+    .footer-logo img { height: 42px; width: auto; filter: drop-shadow(0 0 4px rgba(192,0,12,0.4)); }
+
+    .footer-logo-text {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.4rem;
+      letter-spacing: 3px;
+      color: var(--silver);
     }
 
-    footer p { font-size: 0.8rem; }
+    .footer-logo-text span { color: var(--red-light); }
 
-    footer .footer-links {
-      display: flex;
-      gap: 24px;
-      list-style: none;
-    }
+    footer p { font-size: 0.78rem; color: #666; }
+
+    footer .footer-links { display: flex; gap: 22px; list-style: none; }
 
     footer .footer-links a {
-      color: rgba(255,255,255,0.5);
+      color: #666;
       text-decoration: none;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
       transition: color 0.2s;
     }
 
-    footer .footer-links a:hover { color: var(--gold); }
+    footer .footer-links a:hover { color: var(--red-light); }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-        grid-template-rows: 380px auto;
-      }
-
-      .hero-image-side { order: -1; }
-      .hero-content-side { padding: 50px 28px 60px; }
-
-      nav { padding: 16px 24px; }
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; grid-template-rows: 340px auto; }
+      .hero-img-side { order: -1; }
+      .hero-content-side { padding: 48px 24px 56px; }
+      nav { padding: 12px 22px; }
       .nav-links { display: none; }
-
-      section { padding: 60px 24px; }
-      .trust-bar { padding: 24px; gap: 24px; }
-
-      .gallery-grid {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      .gallery-item:first-child {
-        grid-column: span 2;
-        grid-row: span 1;
-      }
-
+      section { padding: 56px 22px; }
+      .trust-bar { padding: 22px; gap: 22px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:first-child { grid-column: span 2; grid-row: span 1; }
       .process-steps::before { display: none; }
-
-      footer { flex-direction: column; text-align: center; padding: 32px 24px; }
-
-      .cta-banner { padding: 60px 24px; }
-
+      .area-grid { grid-template-columns: 1fr; }
+      .cta-banner { padding: 56px 22px; }
+      footer { flex-direction: column; text-align: center; padding: 28px 22px; }
       .form-row { grid-template-columns: 1fr; }
       .form-group.full { grid-column: span 1; }
     }
@@ -682,6 +765,7 @@
     @media (max-width: 500px) {
       .gallery-grid { grid-template-columns: 1fr; }
       .gallery-item:first-child { grid-column: span 1; }
+      .hero-title { font-size: 2.4rem; }
     }
   </style>
 </head>
@@ -689,11 +773,17 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-logo">Elite<span>Paint</span></div>
+  <div class="nav-logo">
+    <img src="rs-logo.png" alt="RS Painting Logo"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+    <div class="nav-logo-fallback" style="display:none;">
+      🖌 <span>RS</span> PAINTING
+    </div>
+  </div>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#process">Our Process</a></li>
+    <li><a href="#area">Service Area</a></li>
     <li><a href="#testimonials">Reviews</a></li>
     <li><a href="#quote" class="nav-cta">Free Quote</a></li>
   </ul>
@@ -701,20 +791,21 @@
 
 <!-- HERO -->
 <section class="hero" id="quote">
-  <div class="hero-image-side"></div>
+  <div class="hero-img-side"></div>
   <div class="hero-content-side">
-    <div class="hero-badge">Interior Painting Specialists</div>
+    <div class="hero-badge">Scarborough &amp; Toronto GTA</div>
     <h1 class="hero-title">
-      Transform Every Room Into a <em>Masterpiece</em>
+      Interior Painting
+      <em>Done Right.</em>
     </h1>
     <p class="hero-sub">
-      Premium interior painting crafted with precision, premium materials, and an eye for flawless finishes. Your home deserves nothing less.
+      RS Painting delivers flawless interior finishes across Scarborough and the Greater Toronto Area. Premium paint. Expert crew. Zero mess left behind.
     </p>
 
     <!-- INSTANT QUOTE FORM -->
     <div class="quote-form">
-      <h3>Get Your Free Instant Quote</h3>
-      <p>Fill out the form below — we'll respond within 2 hours.</p>
+      <h3>GET YOUR FREE QUOTE</h3>
+      <p>Fill in your details — we respond within 2 hours.</p>
       <form id="quoteForm" onsubmit="handleSubmit(event)">
         <div class="form-row">
           <div class="form-group">
@@ -729,7 +820,7 @@
         <div class="form-row">
           <div class="form-group">
             <label for="phone">Phone Number</label>
-            <input type="tel" id="phone" placeholder="(555) 000-0000" required />
+            <input type="tel" id="phone" placeholder="(416) 000-0000" required />
           </div>
           <div class="form-group">
             <label for="email">Email Address</label>
@@ -737,6 +828,21 @@
           </div>
         </div>
         <div class="form-row">
+          <div class="form-group">
+            <label for="city">Your City</label>
+            <select id="city" required>
+              <option value="" disabled selected>Select city...</option>
+              <option>Scarborough</option>
+              <option>Toronto (Downtown)</option>
+              <option>North York</option>
+              <option>Etobicoke</option>
+              <option>Mississauga</option>
+              <option>Markham</option>
+              <option>Pickering</option>
+              <option>Ajax</option>
+              <option>Other GTA</option>
+            </select>
+          </div>
           <div class="form-group">
             <label for="rooms">Rooms to Paint</label>
             <select id="rooms" required>
@@ -748,6 +854,8 @@
               <option>Other</option>
             </select>
           </div>
+        </div>
+        <div class="form-row">
           <div class="form-group">
             <label for="timeline">Timeline</label>
             <select id="timeline">
@@ -758,18 +866,28 @@
               <option>Just exploring</option>
             </select>
           </div>
+          <div class="form-group">
+            <label for="type">Property Type</label>
+            <select id="type">
+              <option value="" disabled selected>Select...</option>
+              <option>House</option>
+              <option>Condo / Apartment</option>
+              <option>Townhouse</option>
+              <option>Commercial Space</option>
+            </select>
+          </div>
         </div>
         <div class="form-row">
           <div class="form-group full">
             <label for="notes">Project Details (optional)</label>
-            <textarea id="notes" placeholder="Tell us about your space, colors you're considering, any concerns..."></textarea>
+            <textarea id="notes" placeholder="Tell us about your space, preferred colours, any problem areas..."></textarea>
           </div>
         </div>
-        <button type="submit" class="submit-btn">Get My Free Quote →</button>
+        <button type="submit" class="submit-btn">GET MY FREE QUOTE →</button>
         <p class="form-note">No obligation. No spam. 100% free.</p>
       </form>
       <div class="success-msg" id="successMsg">
-        ✅ Thank you! We'll reach out within 2 hours with your free quote.
+        ✅ Thanks! We'll be in touch within 2 hours with your free quote.
       </div>
     </div>
   </div>
@@ -780,29 +898,29 @@
   <div class="trust-item">
     <div class="trust-icon">🏆</div>
     <div class="trust-text">
-      <strong>500+</strong>
-      <span>Homes Transformed</span>
+      <strong>500+ Homes</strong>
+      <span>Transformed in the GTA</span>
     </div>
   </div>
   <div class="trust-item">
     <div class="trust-icon">⭐</div>
     <div class="trust-text">
-      <strong>4.9 / 5</strong>
-      <span>Average Rating</span>
+      <strong>4.9 / 5 Stars</strong>
+      <span>Average Customer Rating</span>
     </div>
   </div>
   <div class="trust-item">
     <div class="trust-icon">🎨</div>
     <div class="trust-text">
       <strong>15+ Years</strong>
-      <span>Interior Experience</span>
+      <span>Interior Paint Experience</span>
     </div>
   </div>
   <div class="trust-item">
     <div class="trust-icon">✅</div>
     <div class="trust-text">
       <strong>Fully Licensed</strong>
-      <span>& Insured</span>
+      <span>& Insured in Ontario</span>
     </div>
   </div>
 </div>
@@ -811,39 +929,39 @@
 <section id="services">
   <div class="section-header">
     <div class="section-label">What We Do</div>
-    <h2 class="section-title">Interior Painting Services<br>Built Around You</h2>
-    <p class="section-sub">Every service is carried out by our expert interior team — zero subcontractors, zero shortcuts.</p>
+    <h2 class="section-title">Interior Painting Services<br>Built for GTA Homes</h2>
+    <p class="section-sub">100% interior specialists — no exterior, no shortcuts. Every job is completed by our own trained crew, never subcontracted.</p>
   </div>
   <div class="services-grid">
     <div class="service-card">
       <div class="service-icon">🛋️</div>
-      <h3>Living Room & Common Areas</h3>
-      <p>Create a welcoming atmosphere with expertly chosen colors and flawless application that sets the tone for your entire home.</p>
+      <h3>Living Rooms & Common Areas</h3>
+      <p>Set the tone for your whole home. We create welcoming, polished spaces with expert colour selection and flawless application.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🛏️</div>
       <h3>Bedroom Painting</h3>
-      <p>Your bedroom is your sanctuary. We help you choose and apply the perfect palette for rest, relaxation, and style.</p>
+      <p>Your bedroom should be your sanctuary. We help you build the perfect palette for rest, relaxation, and personal style.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🍽️</div>
       <h3>Kitchen & Dining Spaces</h3>
-      <p>Durable, moisture-resistant finishes designed for high-traffic areas without sacrificing beauty or warmth.</p>
+      <p>Durable, washable finishes designed to handle the everyday demands of cooking and family life — without losing beauty.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🚿</div>
       <h3>Bathroom Painting</h3>
-      <p>Specialized paints and prep work to handle humidity and moisture — keeping your bathroom fresh for years to come.</p>
+      <p>Specialized moisture-resistant preparation and paint systems that keep your bathroom looking fresh for years.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🪜</div>
       <h3>Hallways & Staircases</h3>
-      <p>Precise edging and smooth coverage in tight, high-traffic spaces that make a lasting first impression.</p>
+      <p>Tight spaces, high traffic, complex angles — our crew handles it all with clean edges and smooth coverage.</p>
     </div>
     <div class="service-card">
       <div class="service-icon">🖼️</div>
       <h3>Accent Walls & Features</h3>
-      <p>Bold accent walls, decorative finishes, and custom textures that add depth and personality to any room.</p>
+      <p>Bold accent walls, decorative finishes, and custom textures that add depth and character to any room.</p>
     </div>
   </div>
 </section>
@@ -852,29 +970,29 @@
 <section id="gallery">
   <div class="section-header">
     <div class="section-label">Our Work</div>
-    <h2 class="section-title">Every Room We Touch<br>Tells a Story</h2>
-    <p class="section-sub">Browse a selection of our recent interior transformations across a variety of styles and spaces.</p>
+    <h2 class="section-title">Recent GTA Transformations</h2>
+    <p class="section-sub">A look at some of the rooms we've transformed across Scarborough and the Greater Toronto Area.</p>
   </div>
   <div class="gallery-grid">
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&auto=format&fit=crop&q=80" alt="Elegant living room after interior painting" loading="lazy" />
-      <div class="gallery-overlay"><span>Living Room — Soft Sage & White</span></div>
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&auto=format&fit=crop&q=80" alt="Living room interior painting" loading="lazy" />
+      <div class="gallery-overlay"><span>Living Room — Soft Sage & White | Scarborough</span></div>
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&auto=format&fit=crop&q=80" alt="Modern bedroom interior paint" loading="lazy" />
-      <div class="gallery-overlay"><span>Master Bedroom — Warm Greige</span></div>
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&auto=format&fit=crop&q=80" alt="Bedroom interior painting" loading="lazy" />
+      <div class="gallery-overlay"><span>Master Bedroom — Warm Greige | North York</span></div>
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=80" alt="Modern kitchen interior" loading="lazy" />
-      <div class="gallery-overlay"><span>Kitchen — Crisp White & Navy</span></div>
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=80" alt="Kitchen interior painting" loading="lazy" />
+      <div class="gallery-overlay"><span>Kitchen — Crisp White & Navy | Toronto</span></div>
     </div>
     <div class="gallery-item">
-      <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&auto=format&fit=crop&q=80" alt="Bedroom interior paint" loading="lazy" />
-      <div class="gallery-overlay"><span>Bedroom — Deep Ocean Blue</span></div>
+      <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&auto=format&fit=crop&q=80" alt="Bedroom blue interior paint" loading="lazy" />
+      <div class="gallery-overlay"><span>Bedroom — Deep Ocean Blue | Markham</span></div>
     </div>
     <div class="gallery-item">
       <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=600&auto=format&fit=crop&q=80" alt="Accent wall feature" loading="lazy" />
-      <div class="gallery-overlay"><span>Accent Wall — Terracotta Feature</span></div>
+      <div class="gallery-overlay"><span>Accent Wall — Terracotta Feature | Pickering</span></div>
     </div>
   </div>
 </section>
@@ -883,34 +1001,34 @@
 <section id="process">
   <div class="section-header">
     <div class="section-label">How It Works</div>
-    <h2 class="section-title">A Seamless Experience<br>From Start to Finish</h2>
-    <p class="section-sub">We've refined our process so your home is disrupted as little as possible — and the results always exceed expectations.</p>
+    <h2 class="section-title">Seamless From First Call<br>To Final Brushstroke</h2>
+    <p class="section-sub">We've refined our process across 500+ GTA homes so your space is disrupted as little as possible — and results always exceed expectations.</p>
   </div>
   <div class="process-steps">
     <div class="step">
       <div class="step-number">1</div>
       <h4>Free Consultation</h4>
-      <p>We visit your home, assess the space, discuss your vision, and provide a detailed, no-obligation quote.</p>
+      <p>We visit your Scarborough or GTA home, assess the space, and deliver a detailed no-obligation quote.</p>
     </div>
     <div class="step">
       <div class="step-number">2</div>
-      <h4>Color Selection</h4>
-      <p>Our experts guide you through color options and finishes that complement your furniture, lighting, and lifestyle.</p>
+      <h4>Colour Selection</h4>
+      <p>Our experts guide you through colours and finishes that match your furniture, lighting, and lifestyle.</p>
     </div>
     <div class="step">
       <div class="step-number">3</div>
-      <h4>Careful Preparation</h4>
-      <p>We protect your furniture, repair surfaces, and prime walls — because great paint starts with great prep.</p>
+      <h4>Careful Prep</h4>
+      <p>Furniture protected, surfaces repaired and primed. Great paint starts with great preparation.</p>
     </div>
     <div class="step">
       <div class="step-number">4</div>
       <h4>Expert Painting</h4>
-      <p>Our licensed painters apply premium paint with clean edges, even coverage, and beautiful results.</p>
+      <p>Our licensed crew applies premium paint with clean edges, even coverage, and exceptional results.</p>
     </div>
     <div class="step">
       <div class="step-number">5</div>
-      <h4>Final Walk-Through</h4>
-      <p>We inspect every inch with you and touch up anything needed until you're completely satisfied.</p>
+      <h4>Walk-Through & Sign-Off</h4>
+      <p>We inspect every corner with you and touch up anything needed until you're 100% happy.</p>
     </div>
   </div>
 </section>
@@ -918,45 +1036,80 @@
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-header">
-    <div class="section-label">What Customers Say</div>
-    <h2 class="section-title">Real Stories from<br>Real Homeowners</h2>
-    <p class="section-sub">We measure our success by how thrilled our customers are when they see the final result.</p>
+    <div class="section-label">Customer Reviews</div>
+    <h2 class="section-title">What GTA Homeowners<br>Say About RS Painting</h2>
+    <p class="section-sub">We measure success by how thrilled our customers are when they see the finished result.</p>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card">
       <div class="quote-mark">"</div>
       <div class="stars">★★★★★</div>
-      <blockquote>They painted our entire first floor and the results were absolutely stunning. The team was professional, clean, and finished a day early. Our home looks like it's straight out of a magazine!</blockquote>
+      <blockquote>RS Painting transformed our entire main floor and the results were absolutely stunning. Professional, tidy, and done ahead of schedule. Our Scarborough home looks brand new!</blockquote>
       <div class="reviewer">
         <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=47" alt="Sarah M." />
         <div class="reviewer-info">
           <strong>Sarah M.</strong>
-          <span>Homeowner · Austin, TX</span>
+          <span>Homeowner · Scarborough, ON</span>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
       <div class="quote-mark">"</div>
       <div class="stars">★★★★★</div>
-      <blockquote>I was nervous about choosing the right colors but they walked me through everything. The accent wall in my living room is the most-complimented thing in my house now. Worth every penny.</blockquote>
+      <blockquote>I was nervous choosing colours but they guided me through every option. The accent wall in my living room is the most-complimented thing in my condo. Worth every penny.</blockquote>
       <div class="reviewer">
         <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=32" alt="Marcus T." />
         <div class="reviewer-info">
           <strong>Marcus T.</strong>
-          <span>Homeowner · Denver, CO</span>
+          <span>Condo Owner · North York, ON</span>
         </div>
       </div>
     </div>
     <div class="testimonial-card">
       <div class="quote-mark">"</div>
       <div class="stars">★★★★★</div>
-      <blockquote>From the free quote to the final walk-through, every step was seamless. They respected my home, kept everything clean, and the finish quality is exceptional. I've already referred them to three neighbors.</blockquote>
+      <blockquote>From the free quote to the final walk-through, everything was seamless. They respected my home, left zero mess, and the finish quality is exceptional. I've already referred three neighbours.</blockquote>
       <div class="reviewer">
         <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=5" alt="Linda R." />
         <div class="reviewer-info">
           <strong>Linda R.</strong>
-          <span>Homeowner · Nashville, TN</span>
+          <span>Homeowner · Markham, ON</span>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE AREA -->
+<section id="area">
+  <div class="section-header">
+    <div class="section-label">Service Area</div>
+    <h2 class="section-title">Based in Scarborough.<br>Serving All of Toronto GTA.</h2>
+    <p class="section-sub">We proudly serve homeowners and condo owners across the Greater Toronto Area. Not sure if we cover your area? Just ask — we likely do.</p>
+  </div>
+  <div class="area-grid">
+    <div class="area-map-placeholder">
+      <div class="map-icon">📍</div>
+      <h4>Greater Toronto Area</h4>
+      <p>Headquartered in Scarborough, Ontario</p>
+    </div>
+    <div>
+      <p style="font-size:0.9rem; color:#555; margin-bottom:20px; line-height:1.7;">
+        RS Painting is a Scarborough-based interior painting company serving homeowners, condo owners, and property managers across the GTA. We provide free on-site consultations and quotes throughout all areas below.
+      </p>
+      <div class="area-tags">
+        <div class="area-tag primary">📍 Scarborough</div>
+        <div class="area-tag">Toronto Downtown</div>
+        <div class="area-tag">North York</div>
+        <div class="area-tag">Etobicoke</div>
+        <div class="area-tag">East York</div>
+        <div class="area-tag">Mississauga</div>
+        <div class="area-tag">Markham</div>
+        <div class="area-tag">Pickering</div>
+        <div class="area-tag">Ajax</div>
+        <div class="area-tag">Whitby</div>
+        <div class="area-tag">Richmond Hill</div>
+        <div class="area-tag">Vaughan</div>
       </div>
     </div>
   </div>
@@ -964,20 +1117,24 @@
 
 <!-- CTA BANNER -->
 <div class="cta-banner">
-  <h2>Ready to Transform Your Home?</h2>
-  <p>Get a free, no-obligation quote today. Most estimates are ready within 2 hours.</p>
-  <a href="#quote" class="cta-btn">Get My Free Quote →</a>
+  <h2>READY TO TRANSFORM YOUR SPACE?</h2>
+  <p>Get a free, no-obligation quote from Scarborough's trusted interior painters. Most responses within 2 hours.</p>
+  <a href="#quote" class="cta-btn">GET MY FREE QUOTE →</a>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">ElitePaint</div>
-  <p>© 2025 ElitePaint Interior Specialists. All rights reserved.</p>
+  <div class="footer-logo">
+    <img src="rs-logo.png" alt="RS Painting"
+         onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+    <div class="footer-logo-text" style="display:none;"><span>RS</span> PAINTING</div>
+  </div>
+  <p>© 2025 RS Painting · Scarborough, ON · Serving the Greater Toronto Area</p>
   <ul class="footer-links">
     <li><a href="#services">Services</a></li>
     <li><a href="#gallery">Gallery</a></li>
-    <li><a href="#testimonials">Reviews</a></li>
-    <li><a href="#quote">Contact</a></li>
+    <li><a href="#area">Service Area</a></li>
+    <li><a href="#quote">Free Quote</a></li>
   </ul>
 </footer>
 
@@ -988,17 +1145,11 @@
     document.getElementById('successMsg').style.display = 'block';
   }
 
-  // Shrink nav on scroll
   window.addEventListener('scroll', () => {
     const nav = document.querySelector('nav');
-    if (window.scrollY > 60) {
-      nav.style.padding = '12px 60px';
-    } else {
-      nav.style.padding = '18px 60px';
-    }
+    nav.style.padding = window.scrollY > 50 ? '10px 60px' : '14px 60px';
   });
 
-  // Phone number auto-format
   document.getElementById('phone').addEventListener('input', function () {
     let v = this.value.replace(/\D/g, '').substring(0, 10);
     if (v.length >= 7) v = '(' + v.substring(0,3) + ') ' + v.substring(3,6) + '-' + v.substring(6);
