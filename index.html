@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premier Interior Painting | Transform Your Space</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #c9a96e;
+      --gold-light: #e8d5b0;
+      --dark: #1a1a2e;
+      --charcoal: #2d2d44;
+      --cream: #faf8f4;
+      --white: #ffffff;
+      --text: #444;
+      --light-gray: #f5f3ef;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 60px;
+      background: rgba(26, 26, 46, 0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(201, 169, 110, 0.2);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    .nav-logo span { color: var(--white); }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: rgba(255,255,255,0.85);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: var(--gold);
+      color: var(--dark) !important;
+      padding: 10px 24px;
+      border-radius: 30px;
+      font-weight: 600 !important;
+      transition: background 0.2s, transform 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--gold-light) !important; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-image-side {
+      position: relative;
+      background: url('https://images.unsplash.com/photo-1562663474-6cbb3eaa4d14?w=1200&auto=format&fit=crop&q=80') center/cover no-repeat;
+    }
+
+    .hero-image-side::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to right, rgba(26,26,46,0.4), transparent);
+    }
+
+    .hero-content-side {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 120px 60px 60px 60px;
+      background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 100%);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(201, 169, 110, 0.15);
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 20px;
+      margin-bottom: 24px;
+      width: fit-content;
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 16px;
+    }
+
+    .hero-title em {
+      font-style: normal;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      color: rgba(255,255,255,0.7);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 36px;
+      font-weight: 300;
+    }
+
+    /* ── QUOTE FORM ── */
+    .quote-form {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .quote-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 6px;
+    }
+
+    .quote-form p {
+      font-size: 0.82rem;
+      color: #888;
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .form-group.full { grid-column: span 2; }
+
+    .form-group label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--charcoal);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 11px 14px;
+      border: 1.5px solid #e0dbd2;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.88rem;
+      color: var(--dark);
+      background: var(--cream);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,169,110,0.15);
+      background: var(--white);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 70px; }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, var(--gold), #b8935a);
+      color: var(--dark);
+      border: none;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,169,110,0.4);
+    }
+
+    .form-note {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #aaa;
+      margin-top: 10px;
+    }
+
+    /* ── SUCCESS MESSAGE ── */
+    .success-msg {
+      display: none;
+      text-align: center;
+      padding: 20px;
+      color: #2d6a4f;
+      background: #d8f3dc;
+      border-radius: 8px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    /* ── TRUST BAR ── */
+    .trust-bar {
+      background: var(--cream);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      border-bottom: 1px solid #ede8df;
+      flex-wrap: wrap;
+    }
+
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .trust-icon {
+      font-size: 1.6rem;
+    }
+
+    .trust-text strong {
+      display: block;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .trust-text span {
+      font-size: 0.78rem;
+      color: #888;
+      font-weight: 400;
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 90px 60px; }
+
+    .section-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--dark);
+      line-height: 1.25;
+      margin-bottom: 16px;
+    }
+
+    .section-sub {
+      color: #777;
+      font-size: 1rem;
+      line-height: 1.7;
+      max-width: 560px;
+    }
+
+    .section-header { margin-bottom: 56px; }
+
+    /* ── SERVICES ── */
+    #services { background: var(--white); }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 28px;
+    }
+
+    .service-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 36px 28px;
+      border: 1px solid #ede8df;
+      transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform 0.3s;
+      transform-origin: bottom;
+    }
+
+    .service-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+      border-color: var(--gold-light);
+    }
+
+    .service-card:hover::before { transform: scaleY(1); }
+
+    .service-icon {
+      font-size: 2.2rem;
+      margin-bottom: 18px;
+    }
+
+    .service-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--dark);
+      margin-bottom: 10px;
+    }
+
+    .service-card p {
+      font-size: 0.88rem;
+      color: #777;
+      line-height: 1.65;
+    }
+
+    /* ── GALLERY ── */
+    #gallery { background: var(--light-gray); }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 16px;
+    }
+
+    .gallery-item {
+      border-radius: 12px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .gallery-item:first-child {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s;
+      min-height: 220px;
+    }
+
+    .gallery-item:first-child img { min-height: 460px; }
+
+    .gallery-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(26,26,46,0.7), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+      display: flex;
+      align-items: flex-end;
+      padding: 20px;
+    }
+
+    .gallery-overlay span {
+      color: var(--white);
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+    /* ── PROCESS ── */
+    #process { background: var(--dark); }
+    #process .section-title { color: var(--white); }
+    #process .section-sub { color: rgba(255,255,255,0.6); }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+      margin-top: 20px;
+    }
+
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: rgba(201,169,110,0.3);
+    }
+
+    .step {
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+
+    .step-number {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), #b8935a);
+      color: var(--dark);
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .step h4 {
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+      font-size: 1rem;
+      margin-bottom: 10px;
+    }
+
+    .step p {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    /* ── TESTIMONIALS ── */
+    #testimonials { background: var(--cream); }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: 16px;
+      padding: 32px;
+      border: 1px solid #ede8df;
+      position: relative;
+    }
+
+    .stars {
+      color: var(--gold);
+      font-size: 1rem;
+      margin-bottom: 14px;
+      letter-spacing: 2px;
+    }
+
+    .testimonial-card blockquote {
+      font-size: 0.92rem;
+      color: #555;
+      line-height: 1.75;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    .reviewer {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .reviewer-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .reviewer-info strong {
+      display: block;
+      font-size: 0.88rem;
+      color: var(--dark);
+      font-weight: 600;
+    }
+
+    .reviewer-info span {
+      font-size: 0.78rem;
+      color: #aaa;
+    }
+
+    .quote-mark {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: 'Playfair Display', serif;
+      font-size: 5rem;
+      color: var(--gold-light);
+      line-height: 1;
+      user-select: none;
+    }
+
+    /* ── CTA BANNER ── */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--dark) 0%, var(--charcoal) 60%, #16213e 100%);
+      padding: 80px 60px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,0.08) 0%, transparent 70%);
+    }
+
+    .cta-banner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .cta-banner p {
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 32px;
+      font-size: 1rem;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      padding: 16px 44px;
+      background: linear-gradient(135deg, var(--gold), #b8935a);
+      color: var(--dark);
+      font-weight: 700;
+      font-size: 1rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(201,169,110,0.4);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.5);
+      padding: 40px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+    }
+
+    footer p { font-size: 0.8rem; }
+
+    footer .footer-links {
+      display: flex;
+      gap: 24px;
+      list-style: none;
+    }
+
+    footer .footer-links a {
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      font-size: 0.8rem;
+      transition: color 0.2s;
+    }
+
+    footer .footer-links a:hover { color: var(--gold); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        grid-template-rows: 380px auto;
+      }
+
+      .hero-image-side { order: -1; }
+      .hero-content-side { padding: 50px 28px 60px; }
+
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+
+      section { padding: 60px 24px; }
+      .trust-bar { padding: 24px; gap: 24px; }
+
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .gallery-item:first-child {
+        grid-column: span 2;
+        grid-row: span 1;
+      }
+
+      .process-steps::before { display: none; }
+
+      footer { flex-direction: column; text-align: center; padding: 32px 24px; }
+
+      .cta-banner { padding: 60px 24px; }
+
+      .form-row { grid-template-columns: 1fr; }
+      .form-group.full { grid-column: span 1; }
+    }
+
+    @media (max-width: 500px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:first-child { grid-column: span 1; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Elite<span>Paint</span></div>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#process">Our Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#quote" class="nav-cta">Free Quote</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="quote">
+  <div class="hero-image-side"></div>
+  <div class="hero-content-side">
+    <div class="hero-badge">Interior Painting Specialists</div>
+    <h1 class="hero-title">
+      Transform Every Room Into a <em>Masterpiece</em>
+    </h1>
+    <p class="hero-sub">
+      Premium interior painting crafted with precision, premium materials, and an eye for flawless finishes. Your home deserves nothing less.
+    </p>
+
+    <!-- INSTANT QUOTE FORM -->
+    <div class="quote-form">
+      <h3>Get Your Free Instant Quote</h3>
+      <p>Fill out the form below — we'll respond within 2 hours.</p>
+      <form id="quoteForm" onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fname">First Name</label>
+            <input type="text" id="fname" placeholder="Jane" required />
+          </div>
+          <div class="form-group">
+            <label for="lname">Last Name</label>
+            <input type="text" id="lname" placeholder="Smith" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" placeholder="(555) 000-0000" required />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="jane@email.com" required />
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="rooms">Rooms to Paint</label>
+            <select id="rooms" required>
+              <option value="" disabled selected>Select...</option>
+              <option>1 Room</option>
+              <option>2–3 Rooms</option>
+              <option>4–5 Rooms</option>
+              <option>Full Home</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="timeline">Timeline</label>
+            <select id="timeline">
+              <option value="" disabled selected>Select...</option>
+              <option>As soon as possible</option>
+              <option>Within 2 weeks</option>
+              <option>Within a month</option>
+              <option>Just exploring</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group full">
+            <label for="notes">Project Details (optional)</label>
+            <textarea id="notes" placeholder="Tell us about your space, colors you're considering, any concerns..."></textarea>
+          </div>
+        </div>
+        <button type="submit" class="submit-btn">Get My Free Quote →</button>
+        <p class="form-note">No obligation. No spam. 100% free.</p>
+      </form>
+      <div class="success-msg" id="successMsg">
+        ✅ Thank you! We'll reach out within 2 hours with your free quote.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-icon">🏆</div>
+    <div class="trust-text">
+      <strong>500+</strong>
+      <span>Homes Transformed</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">⭐</div>
+    <div class="trust-text">
+      <strong>4.9 / 5</strong>
+      <span>Average Rating</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">🎨</div>
+    <div class="trust-text">
+      <strong>15+ Years</strong>
+      <span>Interior Experience</span>
+    </div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-icon">✅</div>
+    <div class="trust-text">
+      <strong>Fully Licensed</strong>
+      <span>& Insured</span>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Interior Painting Services<br>Built Around You</h2>
+    <p class="section-sub">Every service is carried out by our expert interior team — zero subcontractors, zero shortcuts.</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon">🛋️</div>
+      <h3>Living Room & Common Areas</h3>
+      <p>Create a welcoming atmosphere with expertly chosen colors and flawless application that sets the tone for your entire home.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🛏️</div>
+      <h3>Bedroom Painting</h3>
+      <p>Your bedroom is your sanctuary. We help you choose and apply the perfect palette for rest, relaxation, and style.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🍽️</div>
+      <h3>Kitchen & Dining Spaces</h3>
+      <p>Durable, moisture-resistant finishes designed for high-traffic areas without sacrificing beauty or warmth.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🚿</div>
+      <h3>Bathroom Painting</h3>
+      <p>Specialized paints and prep work to handle humidity and moisture — keeping your bathroom fresh for years to come.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🪜</div>
+      <h3>Hallways & Staircases</h3>
+      <p>Precise edging and smooth coverage in tight, high-traffic spaces that make a lasting first impression.</p>
+    </div>
+    <div class="service-card">
+      <div class="service-icon">🖼️</div>
+      <h3>Accent Walls & Features</h3>
+      <p>Bold accent walls, decorative finishes, and custom textures that add depth and personality to any room.</p>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="section-header">
+    <div class="section-label">Our Work</div>
+    <h2 class="section-title">Every Room We Touch<br>Tells a Story</h2>
+    <p class="section-sub">Browse a selection of our recent interior transformations across a variety of styles and spaces.</p>
+  </div>
+  <div class="gallery-grid">
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=900&auto=format&fit=crop&q=80" alt="Elegant living room after interior painting" loading="lazy" />
+      <div class="gallery-overlay"><span>Living Room — Soft Sage & White</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?w=600&auto=format&fit=crop&q=80" alt="Modern bedroom interior paint" loading="lazy" />
+      <div class="gallery-overlay"><span>Master Bedroom — Warm Greige</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&auto=format&fit=crop&q=80" alt="Modern kitchen interior" loading="lazy" />
+      <div class="gallery-overlay"><span>Kitchen — Crisp White & Navy</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1507652313519-d4e9174996dd?w=600&auto=format&fit=crop&q=80" alt="Bedroom interior paint" loading="lazy" />
+      <div class="gallery-overlay"><span>Bedroom — Deep Ocean Blue</span></div>
+    </div>
+    <div class="gallery-item">
+      <img src="https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=600&auto=format&fit=crop&q=80" alt="Accent wall feature" loading="lazy" />
+      <div class="gallery-overlay"><span>Accent Wall — Terracotta Feature</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="section-header">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">A Seamless Experience<br>From Start to Finish</h2>
+    <p class="section-sub">We've refined our process so your home is disrupted as little as possible — and the results always exceed expectations.</p>
+  </div>
+  <div class="process-steps">
+    <div class="step">
+      <div class="step-number">1</div>
+      <h4>Free Consultation</h4>
+      <p>We visit your home, assess the space, discuss your vision, and provide a detailed, no-obligation quote.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">2</div>
+      <h4>Color Selection</h4>
+      <p>Our experts guide you through color options and finishes that complement your furniture, lighting, and lifestyle.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">3</div>
+      <h4>Careful Preparation</h4>
+      <p>We protect your furniture, repair surfaces, and prime walls — because great paint starts with great prep.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">4</div>
+      <h4>Expert Painting</h4>
+      <p>Our licensed painters apply premium paint with clean edges, even coverage, and beautiful results.</p>
+    </div>
+    <div class="step">
+      <div class="step-number">5</div>
+      <h4>Final Walk-Through</h4>
+      <p>We inspect every inch with you and touch up anything needed until you're completely satisfied.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="section-label">What Customers Say</div>
+    <h2 class="section-title">Real Stories from<br>Real Homeowners</h2>
+    <p class="section-sub">We measure our success by how thrilled our customers are when they see the final result.</p>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <blockquote>They painted our entire first floor and the results were absolutely stunning. The team was professional, clean, and finished a day early. Our home looks like it's straight out of a magazine!</blockquote>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=47" alt="Sarah M." />
+        <div class="reviewer-info">
+          <strong>Sarah M.</strong>
+          <span>Homeowner · Austin, TX</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <blockquote>I was nervous about choosing the right colors but they walked me through everything. The accent wall in my living room is the most-complimented thing in my house now. Worth every penny.</blockquote>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=32" alt="Marcus T." />
+        <div class="reviewer-info">
+          <strong>Marcus T.</strong>
+          <span>Homeowner · Denver, CO</span>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="quote-mark">"</div>
+      <div class="stars">★★★★★</div>
+      <blockquote>From the free quote to the final walk-through, every step was seamless. They respected my home, kept everything clean, and the finish quality is exceptional. I've already referred them to three neighbors.</blockquote>
+      <div class="reviewer">
+        <img class="reviewer-avatar" src="https://i.pravatar.cc/88?img=5" alt="Linda R." />
+        <div class="reviewer-info">
+          <strong>Linda R.</strong>
+          <span>Homeowner · Nashville, TN</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<div class="cta-banner">
+  <h2>Ready to Transform Your Home?</h2>
+  <p>Get a free, no-obligation quote today. Most estimates are ready within 2 hours.</p>
+  <a href="#quote" class="cta-btn">Get My Free Quote →</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">ElitePaint</div>
+  <p>© 2025 ElitePaint Interior Specialists. All rights reserved.</p>
+  <ul class="footer-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#quote">Contact</a></li>
+  </ul>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    document.getElementById('quoteForm').style.display = 'none';
+    document.getElementById('successMsg').style.display = 'block';
+  }
+
+  // Shrink nav on scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 60) {
+      nav.style.padding = '12px 60px';
+    } else {
+      nav.style.padding = '18px 60px';
+    }
+  });
+
+  // Phone number auto-format
+  document.getElementById('phone').addEventListener('input', function () {
+    let v = this.value.replace(/\D/g, '').substring(0, 10);
+    if (v.length >= 7) v = '(' + v.substring(0,3) + ') ' + v.substring(3,6) + '-' + v.substring(6);
+    else if (v.length >= 4) v = '(' + v.substring(0,3) + ') ' + v.substring(3);
+    this.value = v;
+  });
+</script>
+
+</body>
+</html>
