@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Electrician Toronto | Life With Green Lighting | GTA Electrical Contractors</title>
+<meta name="description" content="Trusted Toronto electrician with 30+ years serving the GTA. Residential & commercial electrical services including panel upgrades, pot lights, EV charger installation, and home automation. Call 647-504-9298."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --green: #4caf6e;
+    --green-bright: #5dcc85;
+    --green-dim: #2e7a4a;
+    --dark: #0d0d0d;
+    --dark2: #141414;
+    --dark3: #1c1c1c;
+    --dark4: #242424;
+    --border: rgba(76,175,110,0.18);
+    --text: #e8e8e8;
+    --text-muted: #8a8a8a;
+    --white: #ffffff;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Outfit', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+    font-size: 16px;
+    line-height: 1.8;
+  }
+  h1,h2,h3,h4 { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.04em; line-height: 1.1; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; max-width: 100%; }
+
+  /* NAVBAR */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(13,13,13,0.95);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(12px);
+    padding: 0 4%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 72px;
+    transition: all 0.3s;
+  }
+  .nav-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 0.08em;
+    color: var(--white);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .nav-logo-icon {
+    width: 38px; height: 38px;
+    background: var(--green);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+  }
+  .nav-links {
+    display: flex; gap: 2rem; list-style: none;
+  }
+  .nav-links a {
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--text-muted);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--green); }
+  .nav-cta {
+    display: flex; align-items: center; gap: 1rem;
+  }
+  .nav-phone {
+    font-size: 1rem; font-weight: 700; color: var(--green);
+    letter-spacing: 0.04em;
+  }
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.75rem;
+    background: var(--green);
+    color: var(--dark);
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.07em; text-transform: uppercase;
+    border-radius: 4px;
+    transition: background 0.2s, transform 0.15s;
+    border: none; cursor: pointer;
+  }
+  .btn:hover { background: var(--green-bright); transform: translateY(-1px); }
+  .btn-outline {
+    background: transparent;
+    border: 2px solid var(--green);
+    color: var(--green);
+  }
+  .btn-outline:hover { background: var(--green); color: var(--dark); }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex; align-items: center;
+    overflow: hidden;
+    padding: 0 4%;
+  }
+  .hero-bg-img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    filter: brightness(0.28);
+    z-index: 0;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(13,13,13,0.65) 0%, rgba(13,13,13,0.1) 60%, rgba(76,175,110,0.06) 100%);
+    z-index: 1;
+  }
+  .hero-inner {
+    position: relative; z-index: 2;
+    width: 100%;
+    max-width: 1280px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    padding-top: 100px;
+    padding-bottom: 80px;
+  }
+  .hero-content { animation: fadeup 0.9s ease both; }
+  @keyframes fadeup {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(76,175,110,0.12);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.45rem 1.1rem;
+    font-size: 0.82rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--green);
+    margin-bottom: 1.25rem;
+    animation: fadeup 0.9s 0.1s ease both;
+  }
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(0.7); }
+  }
+  .hero h1 {
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    color: var(--white);
+    margin-bottom: 0.25rem;
+    animation: fadeup 0.9s 0.2s ease both;
+  }
+  .hero h1 span { color: var(--green); }
+  .hero-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    max-width: 520px;
+    margin-bottom: 2rem;
+    font-weight: 400;
+    animation: fadeup 0.9s 0.3s ease both;
+    line-height: 1.75;
+  }
+  .hero-stats-inline {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 1.25rem;
+    animation: fadeup 0.9s 0.35s ease both;
+  }
+  .hero-stats-inline .stat {
+    padding: 0.65rem 1.1rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    backdrop-filter: blur(8px);
+    text-align: center;
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    color: var(--green);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem; font-weight: 600;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--text-muted);
+    margin-top: 0.15rem;
+  }
+  .hero-license-inline {
+    font-size: 0.82rem; color: #5a5a5a;
+    animation: fadeup 0.9s 0.4s ease both;
+  }
+  .hero-license-inline strong { color: var(--green); }
+
+  /* HERO FORM */
+  .hero-form-wrap {
+    background: rgba(13,13,13,0.90);
+    border: 1px solid rgba(76,175,110,0.22);
+    border-radius: 14px;
+    padding: 1.75rem 1.75rem;
+    backdrop-filter: blur(20px);
+    animation: fadeup 0.9s 0.3s ease both;
+  }
+  .hero-form-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem; color: #fff;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.2rem;
+  }
+  .hero-form-sub {
+    font-size: 0.82rem; color: #5a5a5a;
+    margin-bottom: 1rem;
+  }
+  .hero-form-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem;
+  }
+  .hf-group { margin-bottom: 0.55rem; }
+  .hf-group label {
+    display: block;
+    font-size: 0.72rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: #5a5a5a; margin-bottom: 0.28rem;
+  }
+  .hf-group input,
+  .hf-group select,
+  .hf-group textarea {
+    width: 100%;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: 6px;
+    padding: 0.7rem 0.9rem;
+    color: #fff;
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+    transition: border-color 0.2s;
+    -webkit-appearance: none;
+  }
+  .hf-group input:focus,
+  .hf-group select:focus,
+  .hf-group textarea:focus { border-color: var(--green); }
+  .hf-group textarea { resize: none; height: 56px; }
+  .hf-group select option { background: #1c1c1c; }
+  .hero-submit-btn { width: 100%; padding: 0.9rem; font-size: 0.9rem; margin-top: 0.2rem; }
+  .hero-form-note {
+    text-align: center; margin-top: 0.6rem;
+    font-size: 0.76rem; color: #3e3e3e;
+    letter-spacing: 0.04em;
+  }
+
+  /* SERVICES STRIP */
+  .services-strip {
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .services-strip-inner {
+    max-width: 1280px; margin: 0 auto;
+    padding: 0 4%;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+  }
+  .strip-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 1.25rem 1rem;
+    border-right: 1px solid var(--border);
+    transition: background 0.2s;
+    cursor: pointer;
+  }
+  .strip-item:last-child { border-right: none; }
+  .strip-item:hover { background: rgba(76,175,110,0.05); }
+  .strip-icon {
+    width: 44px; height: 44px;
+    background: rgba(76,175,110,0.1);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .strip-item:hover .strip-icon { background: rgba(76,175,110,0.2); }
+  .strip-text { font-size: 0.82rem; font-weight: 600; line-height: 1.3; color: var(--text); }
+
+  /* SECTIONS */
+  section:not(.hero) { padding: 6rem 4%; }
+  .inner { max-width: 1280px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.8rem; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--green); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-label::before { content: ''; width: 22px; height: 2px; background: var(--green); }
+  .section-title {
+    font-size: clamp(2.6rem, 5vw, 4.4rem);
+    color: var(--white);
+    margin-bottom: 1rem;
+    line-height: 1.05;
+  }
+  .section-body {
+    font-size: 1rem; color: var(--text-muted);
+    max-width: 640px; line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+  .divider {
+    width: 48px; height: 3px;
+    background: var(--green);
+    border-radius: 2px;
+    margin: 1.25rem 0;
+  }
+
+  /* TWO-COL */
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+  .two-col-wide {
+    grid-template-columns: 55% 1fr;
+  }
+  .two-col.reverse { direction: rtl; }
+  .two-col.reverse > * { direction: ltr; }
+
+  /* IMAGE FRAME */
+  .img-frame {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+  }
+  .img-frame img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 12px;
+    transition: transform 0.5s ease;
+    display: block;
+  }
+  .img-frame:hover img { transform: scale(1.03); }
+  .img-frame::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(13,13,13,0.35) 0%, transparent 50%);
+    border-radius: 12px;
+    pointer-events: none;
+  }
+  .img-badge {
+    position: absolute; bottom: 1.25rem; left: 1.25rem; z-index: 2;
+    background: rgba(13,13,13,0.88);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 0.55rem 1rem;
+    font-size: 0.77rem; font-weight: 700;
+    color: var(--green);
+    letter-spacing: 0.06em;
+    backdrop-filter: blur(8px);
+  }
+
+  /* DARK ALT BG */
+  .bg-alt { background: var(--dark2); }
+  .bg-alt3 { background: var(--dark3); }
+
+  /* SERVICE LIST */
+  .service-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.4rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .service-list li {
+    list-style: none;
+    display: flex; align-items: center; gap: 0.55rem;
+    font-size: 0.9rem; color: var(--text-muted);
+    padding: 0.35rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+  }
+  .service-list li::before {
+    content: '✓';
+    color: var(--green); font-weight: 700;
+    flex-shrink: 0; font-size: 0.75rem;
+  }
+
+  /* CARDS */
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, border-color 0.3s;
+    cursor: pointer;
+  }
+  .card:hover { transform: translateY(-5px); border-color: var(--green-dim); }
+  .card-img-wrap {
+    aspect-ratio: 16/10;
+    overflow: hidden;
+  }
+  .card-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.4s;
+    display: block;
+  }
+  .card:hover .card-img { transform: scale(1.04); }
+  .card-body { padding: 1.4rem; }
+  .card-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.7rem;
+    color: var(--white);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+  }
+  .card-text { font-size: 0.9rem; color: var(--text-muted); line-height: 1.75; }
+  .card-link {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    margin-top: 0.85rem;
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--green); letter-spacing: 0.07em;
+    text-transform: uppercase;
+  }
+  .card-link::after { content: '→'; transition: transform 0.2s; }
+  .card:hover .card-link::after { transform: translateX(4px); }
+
+  /* WHY CHOOSE */
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    margin-top: 2.5rem;
+  }
+  .why-item {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .why-item:hover { border-color: var(--green-dim); transform: translateY(-4px); }
+  .why-icon {
+    width: 54px; height: 54px;
+    background: rgba(76,175,110,0.1);
+    border-radius: 9px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .why-title { font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; color: var(--white); margin-bottom: 0.5rem; }
+  .why-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.8; }
+
+  /* PORTFOLIO GALLERY */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 260px;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+  }
+  .portfolio-item {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+  }
+  .portfolio-item.wide { grid-column: span 2; }
+  .portfolio-item img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center center;
+    transition: transform 0.4s ease;
+    display: block;
+  }
+  .portfolio-item:hover img { transform: scale(1.05); }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex; align-items: flex-end;
+    padding: 1.1rem;
+  }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-caption {
+    font-size: 0.8rem; font-weight: 700;
+    color: var(--green); text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  /* TESTIMONIALS */
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+    margin-top: 2.5rem;
+  }
+  .review {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    position: relative;
+  }
+  .review::before {
+    content: '"';
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 5rem;
+    color: var(--green);
+    opacity: 0.12;
+    position: absolute; top: 0.4rem; right: 1.25rem;
+    line-height: 1;
+  }
+  .stars { color: var(--green); font-size: 0.85rem; margin-bottom: 0.85rem; letter-spacing: 0.1em; }
+  .review-text { font-size: 0.95rem; color: var(--text); line-height: 1.8; font-style: italic; margin-bottom: 1rem; }
+  .reviewer { font-size: 0.82rem; font-weight: 700; color: var(--green); text-transform: uppercase; letter-spacing: 0.08em; }
+
+  /* TRUST BAR */
+  .trust-bar {
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 1.5rem 4%;
+    display: flex;
+    align-items: center; justify-content: center;
+    gap: 3.5rem;
+    flex-wrap: wrap;
+  }
+  .trust-item {
+    display: flex; align-items: center; gap: 0.6rem;
+    font-size: 0.9rem; color: var(--text-muted); font-weight: 600;
+  }
+  .trust-item span { color: var(--green); font-size: 1.25rem; }
+
+  /* CONTACT */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 0.9rem;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-detail:last-child { border-bottom: none; }
+  .c-icon {
+    width: 40px; height: 40px;
+    background: rgba(76,175,110,0.1);
+    border-radius: 7px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .c-label { font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); margin-bottom: 0.15rem; }
+  .c-value { font-size: 1rem; font-weight: 500; color: var(--white); }
+  .c-value a { color: var(--green); }
+  .form-wrap {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 2.25rem;
+  }
+  .form-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; color: var(--white); margin-bottom: 1.25rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.9rem; margin-bottom: 0.9rem; }
+  .form-group { margin-bottom: 0.9rem; }
+  .form-group label { display: block; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.09em; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    width: 100%;
+    background: var(--dark4);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 7px;
+    padding: 0.85rem 1rem;
+    color: var(--white);
+    font-family: 'Outfit', sans-serif;
+    font-size: 0.95rem;
+    transition: border-color 0.2s;
+    outline: none;
+    -webkit-appearance: none;
+  }
+  .form-group input:focus,
+  .form-group textarea:focus,
+  .form-group select:focus { border-color: var(--green); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-group select option { background: var(--dark4); }
+
+  /* AREA BADGES */
+  .area-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.85rem; }
+  .area-tag {
+    background: rgba(76,175,110,0.08);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.28rem 0.85rem;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--text-muted);
+    transition: all 0.2s;
+  }
+  .area-tag:hover { background: rgba(76,175,110,0.15); color: var(--green); border-color: var(--green-dim); }
+
+  /* FOOTER */
+  footer {
+    background: var(--dark2);
+    border-top: 1px solid var(--border);
+    padding: 3rem 4% 2rem;
+  }
+  .footer-inner { max-width: 1280px; margin: 0 auto; }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 3rem;
+    margin-bottom: 2.5rem;
+  }
+  .footer-brand p { font-size: 0.9rem; color: var(--text-muted); margin-top: 0.85rem; line-height: 1.75; max-width: 260px; }
+  .footer-col h4 { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; color: var(--white); margin-bottom: 0.85rem; letter-spacing: 0.06em; }
+  .footer-col ul { list-style: none; }
+  .footer-col ul li { margin-bottom: 0.4rem; }
+  .footer-col ul li a { font-size: 0.9rem; color: var(--text-muted); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--green); }
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    padding-top: 1.75rem; border-top: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--text-muted);
+    flex-wrap: wrap; gap: 0.75rem;
+  }
+  .footer-bottom span { color: var(--green); }
+
+  /* RESPONSIVE */
+  @media (max-width: 1024px) {
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .portfolio-grid { grid-auto-rows: 200px; }
+  }
+  @media (max-width: 900px) {
+    .two-col, .two-col-wide, .contact-wrap, .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    .two-col.reverse { direction: ltr; }
+    .hero-inner { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 3rem; }
+    .nav-links { display: none; }
+    .form-row { grid-template-columns: 1fr; }
+    .hero-form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .cards-grid { grid-template-columns: 1fr; }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .services-strip-inner { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 640px) {
+    .footer-top { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
+    .portfolio-item.wide { grid-column: span 2; }
+    .services-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .hero h1 { font-size: 3.2rem; }
+    .hero-stats-inline { gap: 0.6rem; }
+    section:not(.hero) { padding: 4rem 5%; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-icon">⚡</div>
+    LWGL
+  </a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#lighting">Lighting</a></li>
+    <li><a href="#automation">Smart Home</a></li>
+    <li><a href="#ev">EV Charging</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-cta">
+    <a href="tel:6475049298" class="nav-phone">647-504-9298</a>
+    <a href="#contact" class="btn">Free Estimate</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <img
+    src="./images/tech-work.jpg"
+    class="hero-bg-img"
+    alt="LWGL electrician at work"
+  />
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div class="hero-badge">Serving Toronto &amp; the GTA Since 1993</div>
+      <h1>Electrician<br/><span>Toronto</span></h1>
+      <p class="hero-sub">Commercial &amp; residential electrical contractors you can trust. 30 years keeping GTA homes and businesses safe, wired right, and built to code.</p>
+      <div class="hero-stats-inline">
+        <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Years in GTA</div></div>
+        <div class="stat"><div class="stat-num">5K+</div><div class="stat-label">Jobs Completed</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Licensed</div></div>
+      </div>
+      <div class="hero-license-inline">License: <strong>#7012757</strong> &nbsp;|&nbsp; ECRA/ESA Certified Master Electricians</div>
+    </div>
+    <div class="hero-form-wrap">
+      <div class="hero-form-title">Get a Free Estimate</div>
+      <p class="hero-form-sub">Fill out the form and we will get back to you within the hour.</p>
+      <div class="hero-form-row">
+        <div class="hf-group">
+          <label>First Name</label>
+          <input type="text" placeholder="John"/>
+        </div>
+        <div class="hf-group">
+          <label>Last Name</label>
+          <input type="text" placeholder="Smith"/>
+        </div>
+      </div>
+      <div class="hf-group">
+        <label>Phone Number</label>
+        <input type="tel" placeholder="647-000-0000"/>
+      </div>
+      <div class="hf-group">
+        <label>Email Address</label>
+        <input type="email" placeholder="you@email.com"/>
+      </div>
+      <div class="hf-group">
+        <label>Service Needed</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Electrical Repair / Troubleshooting</option>
+          <option>Pot Light Installation</option>
+          <option>Electrical Panel Upgrade</option>
+          <option>EV Charger Installation</option>
+          <option>Home Automation / Smart Home</option>
+          <option>House Rewiring</option>
+          <option>Emergency Electrician</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="hf-group">
+        <label>Tell Us More (Optional)</label>
+        <textarea placeholder="Briefly describe your project or issue..."></textarea>
+      </div>
+      <button class="btn hero-submit-btn" onclick="this.textContent='✓ Request Sent!'; this.style.background='#2e7a4a'; setTimeout(()=>{this.textContent='Submit Request';this.style.background='';},3000)">Submit Request</button>
+      <p class="hero-form-note">⚡ Fast response &nbsp;&middot;&nbsp; No obligation &nbsp;&middot;&nbsp; Free quote</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES STRIP -->
+<div class="services-strip" id="services">
+  <div class="services-strip-inner">
+    <div class="strip-item">
+      <div class="strip-icon">💡</div>
+      <div class="strip-text">Pot Light Installation</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🔌</div>
+      <div class="strip-text">Panel Upgrades</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🚗</div>
+      <div class="strip-text">EV Charger Installation</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🏠</div>
+      <div class="strip-text">Home Automation</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🔧</div>
+      <div class="strip-text">Emergency Service</div>
+    </div>
+    <div class="strip-item">
+      <div class="strip-icon">🏢</div>
+      <div class="strip-text">Commercial Electrical</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="two-col">
+      <div class="img-frame">
+        <img
+          src="./images/tech-portrait.jpg"
+          alt="LWGL electrician on the job"
+          style="object-position: center top;"
+        />
+        <div class="img-badge">⚡ 30 Years in the GTA</div>
+      </div>
+      <div>
+        <div class="section-label">About Life With Green Lighting</div>
+        <h2 class="section-title">Electrician Toronto: 30 Years of Keeping GTA Homes Safe</h2>
+        <div class="divider"></div>
+        <p class="section-body">I still remember the call I got from a homeowner in Leslieville on a January evening. Her kitchen had gone dark mid-dinner, the breaker kept tripping, and she had no idea why. When I got there, I found aluminum wiring that had been quietly overheating behind her walls for years. Nobody had ever told her it was a problem. That night changed how I think about this work.</p>
+        <p class="section-body">After more than 30 years working across Toronto and the Greater Toronto Area, from Etobicoke to Pickering, from Markham to Mississauga, I have seen what happens when electrical systems are ignored or patched together by the wrong hands. What we do at Life with Green Lighting is treat every job the way I would want someone to treat mine: honest pricing, appointments that respect your schedule, and technicians who actually explain what they found.</p>
+        <div class="area-tags">
+          <span class="area-tag">Scarborough</span><span class="area-tag">North York</span><span class="area-tag">Etobicoke</span><span class="area-tag">Mississauga</span><span class="area-tag">Markham</span><span class="area-tag">Vaughan</span><span class="area-tag">Pickering</span><span class="area-tag">Ajax</span><span class="area-tag">Richmond Hill</span><span class="area-tag">Oakville</span>
+        </div>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Get a Free Estimate</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURED SERVICES CARDS -->
+<section class="bg-alt">
+  <div class="inner">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Our Core Services</h2>
+    <div class="cards-grid">
+      <div class="card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="./images/panel-before.jpg" alt="Electrical repair and troubleshooting Toronto" style="object-position: center 30%;"/>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Electrical Repair &amp; Troubleshooting</div>
+          <p class="card-text">From faulty outlets to power outage troubleshooting, we trace every problem back to its source. Emergency electrician service available across the GTA.</p>
+          <a href="#repair" class="card-link">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="./images/tech-work.jpg" alt="Lighting contractor Toronto pot lights" style="object-position: center center;"/>
+        </div>
+        <div class="card-body">
+          <div class="card-title">Lighting Contractor</div>
+          <p class="card-text">Pot lights, LED retrofits, chandeliers, landscape lighting, and more. We transform the way your space looks and feels with precision lighting design.</p>
+          <a href="#lighting" class="card-link">Learn More</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-img-wrap">
+          <img class="card-img" src="./images/panel-open.jpg" alt="EV charger installation Toronto panel upgrade" style="object-position: center 20%;"/>
+        </div>
+        <div class="card-body">
+          <div class="card-title">EV Charger Installation</div>
+          <p class="card-text">Level 2 EV charger installation, Tesla charger setup, and panel upgrades for electric vehicle home charging throughout Toronto and the GTA.</p>
+          <a href="#ev" class="card-link">Learn More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELECTRICAL REPAIR -->
+<section id="repair">
+  <div class="inner">
+    <div class="two-col reverse">
+      <div class="img-frame">
+        <img
+          src="./images/panel-before.jpg"
+          alt="Messy electrical panel needing repair in Toronto home"
+          style="object-position: center 20%;"
+        />
+        <div class="img-badge">🔧 Emergency Service Available</div>
+      </div>
+      <div>
+        <div class="section-label">Electrical Repair &amp; Troubleshooting</div>
+        <h2 class="section-title">When Something Feels Off, It Usually Is</h2>
+        <div class="divider"></div>
+        <p class="section-body">A breaker that keeps tripping. An outlet that stopped working after a rainstorm. A fuse that blows every time you run the microwave and kettle together. These are not just inconveniences. They are your home telling you something is wrong.</p>
+        <p class="section-body">I have done electrical troubleshooting in older homes in Roncesvalles where the wiring had not been touched since the 1960s, and in newer builds in Ajax where a contractor cut corners. We also carry out home electrical inspections for buyers, which I strongly recommend to anyone purchasing in the GTA.</p>
+        <ul class="service-list">
+          <li>Electrical fuse changing</li>
+          <li>Electrical wiring repair</li>
+          <li>Electrical troubleshooting</li>
+          <li>Emergency electrician service</li>
+          <li>Power outage troubleshooting</li>
+          <li>Electrical safety inspection</li>
+          <li>Home inspection for buyers</li>
+          <li>Faulty outlet repair</li>
+          <li>GFCI outlet installation</li>
+          <li>Circuit breaker replacement</li>
+          <li>Electrical code correction</li>
+          <li>Surge protector installation</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Book a Service Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTING -->
+<section class="bg-alt" id="lighting">
+  <div class="inner">
+    <div class="two-col">
+      <div class="img-frame">
+        <img
+          src="./images/tech-work.jpg"
+          alt="LWGL electrician installing commercial lighting Toronto"
+          style="object-position: center center;"
+        />
+        <div class="img-badge">💡 LED Lighting Specialists</div>
+      </div>
+      <div>
+        <div class="section-label">Lighting Contractor Toronto</div>
+        <h2 class="section-title">The Right Light Changes Everything</h2>
+        <div class="divider"></div>
+        <p class="section-body">I worked on a home in Forest Hill where the owner had spent significantly on furniture and finishes, but the lighting was a scattered mix of old pot lights and a single overhead fixture that cast the whole space in a flat, unflattering glow. After a full lighting redesign, LED pot lights throughout the main floor, a pendant over the kitchen island, and a dimmer on the dining room circuit, she told me it felt like a different house. Same furniture. Same paint. Completely different feeling.</p>
+        <p class="section-body">That is what good lighting does. It is not just about visibility. It shapes how a space feels to the people living in it.</p>
+        <ul class="service-list">
+          <li>Pot light installation</li>
+          <li>LED pot light retrofit</li>
+          <li>Light fixture installation</li>
+          <li>Chandelier installation</li>
+          <li>Pendant light installation</li>
+          <li>Under cabinet lighting</li>
+          <li>Outdoor lighting installation</li>
+          <li>Landscape lighting</li>
+          <li>Security lighting</li>
+          <li>Motion sensor lights</li>
+          <li>Emergency lighting</li>
+          <li>Dimmer switch installation</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Get a Lighting Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOME AUTOMATION -->
+<section id="automation">
+  <div class="inner">
+    <div class="two-col reverse">
+      <div class="img-frame">
+        <img
+          src="./images/subpanel.jpg"
+          alt="Kitchen sub-panel circuit installation Toronto smart home"
+          style="object-position: center 30%;"
+        />
+        <div class="img-badge">🏠 Smart Home Specialists</div>
+      </div>
+      <div>
+        <div class="section-label">Home Automation Company Toronto</div>
+        <h2 class="section-title">Making Your Home Work Smarter</h2>
+        <div class="divider"></div>
+        <p class="section-body">I had a customer in Leaside who called because his smart thermostat had been sitting in a box for four months. What looked like a simple swap turned out to involve a compatibility issue with his older HVAC system that would have caused real problems if he had just pushed through it.</p>
+        <p class="section-body">Toronto homeowners in Riverdale, Bloor West Village, and Lawrence Park have been investing heavily in home automation. The electrical backbone needs to be right. We handle the full scope of smart home setup, from your panel and existing wiring to what you are trying to accomplish, building it out in a way that actually works together.</p>
+        <ul class="service-list">
+          <li>Smart home electrical setup</li>
+          <li>Smart thermostat installation</li>
+          <li>Home automation wiring</li>
+          <li>Security camera wiring</li>
+          <li>Doorbell camera installation</li>
+          <li>Smart lighting installation</li>
+          <li>Smart outlet installation</li>
+          <li>Smart switch installation</li>
+          <li>Security system installation</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Get Smart Home Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ELECTRICAL INSTALLATION -->
+<section class="bg-alt" id="installation">
+  <div class="inner">
+    <div class="two-col">
+      <div class="img-frame">
+        <img
+          src="./images/panel-roughin.jpg"
+          alt="New electrical panel rough-in installation Toronto"
+          style="object-position: center center;"
+        />
+        <div class="img-badge">⚡ Panel Upgrade Experts</div>
+      </div>
+      <div>
+        <div class="section-label">Electrical Installation Service Toronto</div>
+        <h2 class="section-title">Built Right the First Time</h2>
+        <div class="divider"></div>
+        <p class="section-body">There is a house in Swansea I worked on where the kitchen looked beautiful on the surface, but when the new owners called about the dishwasher tripping the breaker, I opened the panel and found four separate circuits spliced together by someone who had no business touching electrical work. It cost the homeowner significantly more than a proper installation would have in the first place.</p>
+        <p class="section-body">We wire new construction in Stouffville and Whitby, handle full renovation wiring for century homes in Trinity Bellwoods and High Park, and upgrade panels in Scarborough bungalows never designed for modern electrical demand.</p>
+        <ul class="service-list">
+          <li>Electrical panel upgrade</li>
+          <li>Breaker panel replacement</li>
+          <li>Fuse box conversion</li>
+          <li>House rewiring service</li>
+          <li>Knob and tube replacement</li>
+          <li>Aluminum wiring replacement</li>
+          <li>New circuit installation</li>
+          <li>Basement wiring</li>
+          <li>Garage wiring</li>
+          <li>Kitchen electrical upgrade</li>
+          <li>Hot tub wiring</li>
+          <li>Generator installation</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Book an Installation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EV CHARGER -->
+<section id="ev">
+  <div class="inner">
+    <div class="two-col reverse">
+      <div class="img-frame">
+        <img
+          src="./images/panel-open.jpg"
+          alt="New 200A Eaton panel installed for EV charger Toronto"
+          style="object-position: center 15%;"
+        />
+        <div class="img-badge">🚗 Level 2 EV Charger Specialists</div>
+      </div>
+      <div>
+        <div class="section-label">EV Charging Station Contractor Toronto</div>
+        <h2 class="section-title">EV Charger Installation Toronto</h2>
+        <div class="divider"></div>
+        <p class="section-body">I drive electric myself. The first thing I did before picking up the car was have a Level 2 charger installed in my garage, because I knew relying on a standard 120 volt outlet to charge an electric vehicle is like trying to fill a bathtub with a garden hose. It works, technically, but it is not how you want to live.</p>
+        <p class="section-body">We get calls from Oakville, Richmond Hill, Thornhill, and all across Toronto from people who just took delivery of a Tesla or Hyundai Ioniq and want to know what it takes to charge properly at home. A lot of homes in older Toronto neighbourhoods, the Danforth, St. Clair West, East York, have panels never sized for the additional load. We assess your setup, tell you exactly what needs to happen, and give you a clear price before any work begins.</p>
+        <ul class="service-list">
+          <li>Level 2 EV charger installation</li>
+          <li>Tesla charger installation</li>
+          <li>EV home charging station setup</li>
+          <li>EV charger circuit installation</li>
+          <li>EV charger panel upgrade</li>
+          <li>Electric vehicle charger repair</li>
+          <li>Electric car charger installation</li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1.75rem;">Get EV Charger Quote</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY CHOOSE US -->
+<section class="bg-alt3">
+  <div class="inner">
+    <div style="max-width:580px; margin:0 auto 0.5rem; text-align:center;">
+      <div class="section-label" style="justify-content:center;">Why Choose Us</div>
+      <h2 class="section-title">Certified Master Electricians</h2>
+      <p class="section-body" style="margin:0 auto;">Rest assured that an experienced, well-trained technician is attending to the wiring in your home. Trusted across the GTA for over 30 years.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="why-icon">🏆</div>
+        <div class="why-title">30+ Years Experience</div>
+        <p class="why-text">Residential, commercial, and industrial projects across the GTA. Thousands of electrical wiring projects completed, keeping homes and properties safe.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">💲</div>
+        <div class="why-title">Upfront Pricing</div>
+        <p class="why-text">Our pricing has always been upfront. No hidden fees on top of the straightforward pricing system we use to quote your requirements. On budget, every time.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">⏱</div>
+        <div class="why-title">Respectful of Your Time</div>
+        <p class="why-text">We arrive on time and schedule appointments when it is convenient for you. Fully stocked trucks so most jobs are completed in a single visit.</p>
+      </div>
+      <div class="why-item">
+        <div class="why-icon">✅</div>
+        <div class="why-title">Licensed &amp; Permitted</div>
+        <p class="why-text">ECRA/ESA licensed master electricians. License #7012757. We pull permits on every job that requires one and work strictly to the Ontario Electrical Safety Code.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item"><span>⚡</span> ECRA/ESA Certified</div>
+  <div class="trust-item"><span>📋</span> License #7012757</div>
+  <div class="trust-item"><span>🛡️</span> Fully Insured</div>
+  <div class="trust-item"><span>🕐</span> Emergency Service</div>
+  <div class="trust-item"><span>📍</span> Serving All of GTA</div>
+</div>
+
+<!-- PORTFOLIO GALLERY -->
+<section class="bg-alt">
+  <div class="inner">
+    <div style="display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem;">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title">Recent Projects</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline">Book a Job</a>
+    </div>
+    <div class="portfolio-grid">
+      <!-- Row 1: wide + 1 -->
+      <div class="portfolio-item wide">
+        <img src="./images/panel-roughin.jpg" alt="New panel rough-in with all circuits" style="object-position: center center;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">New Panel Rough-In</div></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="./images/tech-portrait.jpg" alt="LWGL electrician on the job" style="object-position: center top;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Commercial Installation</div></div>
+      </div>
+      <!-- Row 2: 1 + wide -->
+      <div class="portfolio-item">
+        <img src="./images/panel-open.jpg" alt="Clean new 200A Eaton panel" style="object-position: center 20%;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">200A Panel Install</div></div>
+      </div>
+      <div class="portfolio-item wide">
+        <img src="./images/panel-before.jpg" alt="Panel repair and troubleshooting" style="object-position: center 25%;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Electrical Troubleshooting</div></div>
+      </div>
+      <!-- Row 3: 3 across -->
+      <div class="portfolio-item">
+        <img src="./images/tech-work.jpg" alt="LWGL tech installing commercial lighting" style="object-position: center center;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Commercial Lighting</div></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="./images/subpanel.jpg" alt="Kitchen sub-panel installation" style="object-position: center 30%;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Sub-Panel Install</div></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="./images/meter-base.jpg" alt="Service entrance meter base" style="object-position: center top;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Service Entrance</div></div>
+      </div>
+      <!-- Row 4: wide + 1 -->
+      <div class="portfolio-item wide">
+        <img src="./images/panel-complex.jpg" alt="Siemens panel with pool pump timer" style="object-position: center 30%;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Panel &amp; Pool Pump Circuit</div></div>
+      </div>
+      <div class="portfolio-item">
+        <img src="./images/panel-finished.jpg" alt="Finished panel installation" style="object-position: center center;"/>
+        <div class="portfolio-overlay"><div class="portfolio-caption">Finished Panel</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section>
+  <div class="inner">
+    <div style="max-width:520px; margin:0 auto 0.5rem; text-align:center;">
+      <div class="section-label" style="justify-content:center;">Customer Reviews</div>
+      <h2 class="section-title">What GTA Homeowners Say</h2>
+    </div>
+    <div class="reviews-grid">
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Honestly the best electricians in town, very organized and affordable pricing. They showed up on time, explained everything clearly, and the work was done perfectly.</p>
+        <div class="reviewer">Dave Reddington &nbsp;—&nbsp; Toronto, ON</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Very professional and honest electricians, got the work done properly and left the place neat and tidy. I would not hesitate to call them again for any electrical work.</p>
+        <div class="reviewer">Amelia Banks &nbsp;—&nbsp; Scarborough, ON</div>
+      </div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">Best electricians in the GTA, highly recommend anyone who is in need of electrical services. They installed our EV charger and upgraded our panel in one visit.</p>
+        <div class="reviewer">Kenny Stutes &nbsp;—&nbsp; North York, ON</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="bg-alt" id="contact">
+  <div class="inner">
+    <div class="contact-wrap">
+      <div>
+        <div class="section-label">Get In Touch</div>
+        <h2 class="section-title">Let's Discuss Your Next Project</h2>
+        <div class="divider"></div>
+        <p class="section-body">Fill out the form or call us to set up a free in-home consultation. We serve Toronto and the entire Greater Toronto Area.</p>
+        <div class="contact-detail">
+          <div class="c-icon">📞</div>
+          <div>
+            <div class="c-label">Phone</div>
+            <div class="c-value"><a href="tel:6475049298">647-504-9298</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">✉️</div>
+          <div>
+            <div class="c-label">Email</div>
+            <div class="c-value"><a href="mailto:lifewithgreenlighting@hotmail.com">lifewithgreenlighting@hotmail.com</a></div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Address</div>
+            <div class="c-value">9 Spall Court, Scarborough, Ontario M1C 0B1</div>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="c-icon">🗺️</div>
+          <div>
+            <div class="c-label">Service Area</div>
+            <div class="c-value">GTA &amp; Greater GTA Area</div>
+          </div>
+        </div>
+      </div>
+      <div class="form-wrap">
+        <div class="form-title">Request a Free Estimate</div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" placeholder="John"/>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" placeholder="Smith"/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" placeholder="john@email.com"/>
+          </div>
+          <div class="form-group">
+            <label>Phone</label>
+            <input type="tel" placeholder="647-000-0000"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Address</label>
+          <input type="text" placeholder="Your property address"/>
+        </div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option value="">Select a service...</option>
+            <option>Electrical Repair / Troubleshooting</option>
+            <option>Pot Light Installation</option>
+            <option>Electrical Panel Upgrade</option>
+            <option>EV Charger Installation</option>
+            <option>Home Automation / Smart Home</option>
+            <option>House Rewiring</option>
+            <option>Emergency Electrician</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Tell Us More</label>
+          <textarea placeholder="Describe your electrical project or issue..."></textarea>
+        </div>
+        <button class="btn" id="contact-submit" style="width:100%; padding:0.9rem; font-size:0.9rem;">Submit Request</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">
+          <div class="nav-logo-icon">⚡</div>
+          LWGL
+        </a>
+        <p>Toronto's trusted electrical contractors. Serving the GTA with residential, commercial, and industrial electrical services for over 30 years. Licensed, insured, and always on time.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#repair">Electrical Repair</a></li>
+          <li><a href="#lighting">Pot Light Installation</a></li>
+          <li><a href="#lighting">Lighting Contractor</a></li>
+          <li><a href="#automation">Home Automation</a></li>
+          <li><a href="#installation">Panel Upgrades</a></li>
+          <li><a href="#ev">EV Charger Installation</a></li>
+          <li><a href="#repair">Emergency Electrician</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service Areas</h4>
+        <ul>
+          <li><a href="#">Toronto</a></li>
+          <li><a href="#">Scarborough</a></li>
+          <li><a href="#">North York</a></li>
+          <li><a href="#">Etobicoke</a></li>
+          <li><a href="#">Mississauga</a></li>
+          <li><a href="#">Markham</a></li>
+          <li><a href="#">Vaughan</a></li>
+          <li><a href="#">Pickering</a></li>
+          <li><a href="#">Richmond Hill</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:6475049298">647-504-9298</a></li>
+          <li><a href="mailto:lifewithgreenlighting@hotmail.com">lifewithgreenlighting@hotmail.com</a></li>
+          <li><a href="#">9 Spall Court, Scarborough ON</a></li>
+          <li><a href="#">M1C 0B1</a></li>
+        </ul>
+        <a href="#contact" class="btn" style="margin-top:1rem;">Free Estimate</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div>© 2025 <span>Life With Green Lighting</span>. All rights reserved. License #7012757</div>
+      <div>Designed for <span>lifewithgreenlighting.com</span></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.style.background = window.scrollY > 60
+      ? 'rgba(13,13,13,0.99)'
+      : 'rgba(13,13,13,0.95)';
+  });
+
+  document.getElementById('contact-submit').addEventListener('click', function() {
+    this.textContent = '✓ Request Sent!';
+    this.style.background = 'var(--green-dim)';
+    setTimeout(() => {
+      this.textContent = 'Submit Request';
+      this.style.background = '';
+    }, 3000);
+  });
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.card, .why-item, .review, .strip-item, .portfolio-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(18px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
