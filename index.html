@@ -644,32 +644,138 @@
   }
   .footer-bottom span { color: var(--green); }
 
+  /* HAMBURGER */
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 40px; height: 40px;
+    background: none; border: none; cursor: pointer;
+    padding: 4px;
+    z-index: 200;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px; height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.open span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  /* MOBILE MENU DRAWER */
+  .mobile-menu {
+    display: none;
+    position: fixed;
+    top: 72px; left: 0; right: 0;
+    background: rgba(13,13,13,0.98);
+    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px);
+    z-index: 99;
+    padding: 1.5rem 6%;
+    flex-direction: column;
+    gap: 0;
+  }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a {
+    display: block;
+    padding: 0.85rem 0;
+    font-size: 1rem; font-weight: 600;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: color 0.2s;
+  }
+  .mobile-menu a:hover { color: var(--green); }
+  .mobile-menu .mob-cta {
+    display: flex; flex-direction: column; gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .mobile-menu .mob-phone {
+    font-size: 1.2rem; font-weight: 700; color: var(--green);
+    text-align: center; letter-spacing: 0.04em;
+    border-bottom: none; padding: 0;
+  }
+  .mobile-menu .btn { text-align: center; }
+
   /* RESPONSIVE */
   @media (max-width: 1024px) {
     .why-grid { grid-template-columns: repeat(2, 1fr); }
     .portfolio-grid { grid-auto-rows: 200px; }
+    .cards-grid { grid-template-columns: repeat(2, 1fr); }
   }
+
   @media (max-width: 900px) {
-    .two-col, .two-col-wide, .contact-wrap, .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+    .nav-links, .nav-phone { display: none; }
+    .nav-hamburger { display: flex; }
+    nav { padding: 0 5%; }
+
+    .two-col, .two-col-wide { grid-template-columns: 1fr; gap: 2rem; }
     .two-col.reverse { direction: ltr; }
-    .hero-inner { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 3rem; }
-    .nav-links { display: none; }
-    .form-row { grid-template-columns: 1fr; }
-    .hero-form-row { grid-template-columns: 1fr; }
-    .footer-top { grid-template-columns: 1fr 1fr; }
+    .img-frame { aspect-ratio: 16/9; }
+
+    .hero-inner { grid-template-columns: 1fr; padding-top: 90px; padding-bottom: 2.5rem; gap: 2rem; }
+    .hero h1 { font-size: clamp(2.8rem, 10vw, 4rem); }
+    .hero-sub { font-size: 1rem; }
+
+    .footer-top { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .cards-grid { grid-template-columns: 1fr; }
     .reviews-grid { grid-template-columns: 1fr; }
     .services-strip-inner { grid-template-columns: repeat(3, 1fr); }
-  }
-  @media (max-width: 640px) {
-    .footer-top { grid-template-columns: 1fr; }
-    .why-grid { grid-template-columns: 1fr; }
-    .portfolio-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 160px; }
-    .portfolio-item.wide { grid-column: span 2; }
-    .services-strip-inner { grid-template-columns: repeat(2, 1fr); }
-    .hero h1 { font-size: 3.2rem; }
-    .hero-stats-inline { gap: 0.6rem; }
     section:not(.hero) { padding: 2.5rem 5%; }
+  }
+
+  @media (max-width: 640px) {
+    nav { height: 60px; }
+    .mobile-menu { top: 60px; }
+    .nav-logo { font-size: 1.4rem; }
+    .nav-logo-icon { width: 30px; height: 30px; font-size: 0.9rem; }
+    .nav-cta .btn { padding: 0.55rem 1rem; font-size: 0.78rem; }
+
+    .hero { min-height: auto; }
+    .hero-inner { padding-top: 80px; padding-bottom: 2rem; }
+    .hero h1 { font-size: 2.8rem; }
+    .hero-sub { font-size: 0.95rem; margin-bottom: 1.25rem; }
+    .hero-stats-inline { gap: 0.5rem; }
+    .hero-stats-inline .stat { padding: 0.5rem 0.75rem; }
+    .stat-num { font-size: 1.8rem; }
+    .stat-label { font-size: 0.65rem; }
+    .hero-badge { font-size: 0.72rem; padding: 0.35rem 0.85rem; }
+    .hero-form-wrap { padding: 1.25rem; }
+    .hero-form-title { font-size: 1.6rem; }
+    .hero-form-row { grid-template-columns: 1fr; }
+
+    .img-frame { aspect-ratio: 4/3; }
+    .section-title { font-size: 2rem; }
+    .service-list { grid-template-columns: 1fr; }
+
+    .services-strip-inner { grid-template-columns: repeat(2, 1fr); }
+    .strip-item { padding: 1rem 0.75rem; }
+    .strip-icon { width: 36px; height: 36px; font-size: 1rem; }
+    .strip-text { font-size: 0.75rem; }
+
+    .why-grid { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr; gap: 1.5rem; }
+    .footer-brand p { max-width: 100%; }
+
+    .portfolio-grid { grid-template-columns: 1fr 1fr; grid-auto-rows: 140px; }
+    .portfolio-item.wide { grid-column: span 2; }
+
+    .trust-bar { gap: 1.5rem; padding: 1.25rem 5%; }
+    .trust-item { font-size: 0.8rem; }
+
+    section:not(.hero) { padding: 2rem 4%; }
+  }
+
+  @media (max-width: 400px) {
+    .hero h1 { font-size: 2.4rem; }
+    .hero-stats-inline { flex-wrap: nowrap; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .portfolio-item.wide { grid-column: span 1; }
+    .services-strip-inner { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
@@ -692,8 +798,25 @@
   <div class="nav-cta">
     <a href="tel:6475049298" class="nav-phone">647-504-9298</a>
     <a href="#contact" class="btn">Free Estimate</a>
+    <button class="nav-hamburger" id="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a href="#services" class="mob-link">Services</a>
+  <a href="#about" class="mob-link">About</a>
+  <a href="#lighting" class="mob-link">Lighting</a>
+  <a href="#automation" class="mob-link">Smart Home</a>
+  <a href="#ev" class="mob-link">EV Charging</a>
+  <a href="#contact" class="mob-link">Contact</a>
+  <div class="mob-cta">
+    <a href="tel:6475049298" class="mob-phone">647-504-9298</a>
+    <a href="#contact" class="btn">Get a Free Estimate</a>
+  </div>
+</div>
 
 <!-- HERO -->
 <section class="hero" id="home">
@@ -1573,6 +1696,7 @@
 </footer>
 
 <script>
+  // Nav scroll
   const navbar = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
     navbar.style.background = window.scrollY > 60
@@ -1580,7 +1704,23 @@
       : 'rgba(13,13,13,0.95)';
   });
 
+  // Hamburger menu
+  const hamburger = document.getElementById('nav-hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    const isOpen = mobileMenu.classList.toggle('open');
+    hamburger.classList.toggle('open', isOpen);
+    hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  });
+  // Close mobile menu on link click
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      hamburger.classList.remove('open');
+    });
+  });
 
+  // Fade-in on scroll
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => {
       if (e.isIntersecting) {
