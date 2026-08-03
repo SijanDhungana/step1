@@ -69,6 +69,58 @@ Wipe and start over: `npx prisma db push --force-reset && npm run seed`.
 
 ---
 
+## Deploy to Vercel
+
+Next.js + Neon is Vercel's home turf, and this app is set up for it — the build never
+touches the database, so a deploy can't fail on a sleeping Neon instance.
+
+1. **Import the repo** in Vercel → *Add New Project*.
+2. **Set the Root Directory to `car-rental`.** The app lives in a subfolder of the repo;
+   without this, Vercel looks at the repo root and finds no Next.js app. Everything else
+   (framework preset, build command) is detected automatically.
+3. **Add the environment variables** under Settings → Environment Variables:
+
+   | Variable        | Value                                                              |
+   | --------------- | ------------------------------------------------------------------ |
+   | `DATABASE_URL`  | Neon **pooled** string (host contains `-pooler`) — required         |
+   | `DIRECT_URL`    | Neon **direct** string — required                                   |
+   | `AUTH_SECRET`   | A long random string: `node -e "console.log(require('crypto').randomBytes(32).toString('hex'))"` |
+   | `TZ`            | Your office timezone, e.g. `America/New_York` — see the warning below |
+   | `SESSION_HOURS` | Optional, defaults to 12                                            |
+
+   The `ADMIN_*` variables aren't needed on Vercel; they're only read by the seed script,
+   which you run from your machine in the next step.
+
+4. **Create the tables and seed, once, from your machine** — point your local `.env` at
+   the same Neon database and run:
+
+   ```bash
+   npx prisma db push && npm run seed
+   ```
+
+   Deploys deliberately don't do this: schema changes and seeding stay explicit actions,
+   not a side effect of pushing code.
+
+5. **Deploy.** Sign in with the seeded admin and change the password immediately.
+
+Later schema changes follow the same shape: edit `prisma/schema.prisma`, run
+`npx prisma db push` against Neon, then push your code.
+
+> ⚠️ **Set `TZ`, or every time will be wrong.** Vercel runs in UTC. This app formats
+> booking times in the server's timezone, so without `TZ` a 4 PM pickup in New York
+> displays as 8 PM. Verified: with `TZ=UTC` the dashboard shows `8:20 PM`, with
+> `TZ=America/New_York` the same booking shows `4:20 PM`.
+
+> 💵 **On "free":** Neon's free tier genuinely covers this. Vercel's free **Hobby** plan
+> does not — its terms limit it to non-commercial use, and an internal tool running a
+> rental business is commercial, which means the Pro plan (~$20/user/month). If free
+> matters more than Vercel specifically, this app is a plain Next.js server and runs
+> anywhere that hosts Node — Render, Railway and Fly all have cheaper or free entry
+> tiers, and `npm run build && npm run start` on any small VPS works too. Nothing in the
+> code is Vercel-specific.
+
+---
+
 ## What's in it
 
 - **Auth** — email + password login, bcrypt hashes, signed session cookie (HTTP-only,
@@ -226,7 +278,8 @@ All routes require a session cookie; the ones marked *admin* require `role = ADM
 ## Notes
 
 - Dates are shown in the server's timezone. For a fixed office timezone, set `TZ` in
-  `.env` (e.g. `TZ="America/New_York"`).
+  `.env` (e.g. `TZ="America/New_York"`) — and in your host's environment variables when
+  deployed, since servers usually default to UTC.
 - The last remaining admin account can't be deleted or demoted, and you can't delete the
   account you're signed in with.
 - Deleting a staff member keeps their bookings; the "created by" link is just cleared.
