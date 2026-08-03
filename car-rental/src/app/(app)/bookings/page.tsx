@@ -20,11 +20,13 @@ export default async function BookingsPage({ searchParams }: { searchParams: Sea
     where: {
       ...(carFilter ? { carId: carFilter } : {}),
       ...(statusFilter && BOOKING_STATUSES.includes(statusFilter as never) ? { status: statusFilter } : {}),
+      // `mode: "insensitive"` is required on Postgres — unlike SQLite, its LIKE
+      // is case-sensitive, so without this "ada" would not find "Ada".
       ...(q
         ? {
             OR: [
-              { customerName: { contains: q } },
-              { customerPhone: { contains: q } },
+              { customerName: { contains: q, mode: "insensitive" as const } },
+              { customerPhone: { contains: q, mode: "insensitive" as const } },
             ],
           }
         : {}),

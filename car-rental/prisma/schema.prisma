@@ -1,13 +1,21 @@
 // Car rental management — internal staff tool.
-// SQLite by default; swap `provider` to "postgresql" and change DATABASE_URL to move to Postgres.
+//
+// Postgres (Neon's free tier works out of the box — see README).
+//   url       -> the POOLED connection string, used by the running app
+//   directUrl -> the DIRECT (non-pooled) string, used by prisma db push / migrate
+// With a plain local Postgres, point both at the same URL.
+//
+// To go back to a local SQLite file: set provider = "sqlite", drop `directUrl`,
+// and set DATABASE_URL="file:./dev.db" (see "Using SQLite instead" in the README).
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 /// A staff member who can log in. There is no public signup — admins create accounts.

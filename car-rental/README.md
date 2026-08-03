@@ -4,21 +4,39 @@ Internal booking and fleet management for a 6-car rental company. Staff sign in 
 manage bookings, km-overage billing, availability and the schedule. There is no
 public-facing side and no customer signup.
 
-Built with **Next.js 16 (App Router) + React 19 + Prisma + SQLite + Tailwind CSS 4**.
+Built with **Next.js 16 (App Router) + React 19 + Prisma + Postgres + Tailwind CSS 4**.
+The database is Postgres — [Neon](https://neon.tech)'s free tier works out of the box.
 
 ---
 
 ## Run it locally
 
-Requires Node 20+ (developed on Node 22).
+Requires Node 20+ (developed on Node 22) and a Postgres database.
+
+### 1. Get a database (Neon, free)
+
+1. Sign up at [neon.tech](https://neon.tech) and create a project — the free plan is
+   enough for this app.
+2. Open your project → **Connect**, and copy the connection string **twice**:
+   - the **pooled** one (its host contains `-pooler`) → `DATABASE_URL`
+   - the **direct** one (same host without `-pooler`) → `DIRECT_URL`
+
+   The app runs its queries through the pooled endpoint; `prisma db push` needs the
+   direct one, because schema changes require a real (non-pooled) session. Keep
+   `?sslmode=require` on both.
+
+### 2. Run it
 
 ```bash
 cd car-rental
-cp .env.example .env      # optional: edit the admin email/password and AUTH_SECRET
+cp .env.example .env      # paste your two Neon URLs, set AUTH_SECRET
 npm install
-npm run setup             # generates the Prisma client, creates the DB, seeds fleet + admin
+npm run setup             # generates the Prisma client, creates the tables, seeds fleet + admin
 npm run dev               # http://localhost:3000
 ```
+
+Already have Postgres running locally? Skip step 1 and point both `DATABASE_URL` and
+`DIRECT_URL` at it, e.g. `postgresql://postgres:postgres@localhost:5432/fleet`.
 
 Sign in with the seeded admin account:
 
@@ -41,7 +59,13 @@ Sign in with the seeded admin account:
 | `npm run typecheck` | TypeScript check                                               |
 | `npm run db:studio` | Browse the database in Prisma Studio                           |
 
-Reset everything: `rm prisma/dev.db && npm run setup`.
+Wipe and start over: `npx prisma db push --force-reset && npm run seed`.
+
+> **Neon free-tier notes.** The database autosuspends after ~5 minutes idle, so the
+> first request after a quiet spell takes about a second while it wakes — normal, not a
+> bug. The free plan keeps one project with plenty of storage for a booking app like
+> this. Because the app runs on the Node runtime (not edge), the plain connection string
+> is all you need; there's no reason to add `@prisma/adapter-neon`.
 
 ---
 
@@ -133,10 +157,17 @@ without checking `allowConflict`.
 
 Charges are never stored — they're derived from the booking plus the current settings.
 
-### Switching to Postgres
+### Using SQLite instead
 
-Change `provider` to `"postgresql"` in `prisma/schema.prisma`, point `DATABASE_URL` at
-your database, and run `npx prisma db push && npm run seed`. No application code changes.
+If you'd rather have a zero-setup local file and no hosted database:
+
+1. In `prisma/schema.prisma`, set `provider = "sqlite"` and delete the `directUrl` line.
+2. In `.env`, set `DATABASE_URL="file:./dev.db"` (`DIRECT_URL` is then unused).
+3. In `src/app/(app)/bookings/page.tsx`, drop the two `mode: "insensitive"` options —
+   SQLite doesn't accept them, and its `LIKE` is already case-insensitive.
+4. `npx prisma db push && npm run seed`.
+
+That third step is the only application code that differs between the two databases.
 
 ---
 
@@ -146,8 +177,7 @@ your database, and run `npx prisma db push && npm run seed`. No application code
 car-rental/
 ├── prisma/
 │   ├── schema.prisma          # data model
-│   ├── seed.ts                # 6 cars + admin account + settings row
-│   └── dev.db                 # SQLite file (gitignored)
+│   └── seed.ts                # 6 cars + admin account + settings row
 ├── src/
 │   ├── app/
 │   │   ├── login/             # sign-in page (outside the app shell)
