@@ -1,0 +1,21 @@
+node_modules/
+.next/
+out/
+build/
+*.log
+npm-debug.log*
+
+# Environment / secrets
+.env
+.env.local
+
+# SQLite database files
+prisma/*.db
+prisma/*.db-journal
+prisma/dev.db*
+
+# Generated Prisma client
+src/generated/
+.DS_Store
+next-env.d.ts
+tsconfig.tsbuildinfo

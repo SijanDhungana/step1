@@ -1,0 +1,88 @@
+// Car rental management — internal staff tool.
+// SQLite by default; swap `provider` to "postgresql" and change DATABASE_URL to move to Postgres.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+/// A staff member who can log in. There is no public signup — admins create accounts.
+model User {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  name         String
+  passwordHash String
+  role         String   @default("STAFF") // "ADMIN" | "STAFF"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  bookings Booking[] @relation("BookingCreatedBy")
+}
+
+/// One of the fleet vehicles. Seeded on first run; staff do not create cars.
+model Car {
+  id     String  @id @default(cuid())
+  slug   String  @unique // stable key used by the seed so re-seeding is idempotent
+  name   String // display name, e.g. "Yellow Lamborghini Urus"
+  make   String
+  model  String
+  color  String
+  plate  String?
+  active Boolean @default(true)
+  sort   Int     @default(0)
+
+  bookings Booking[]
+}
+
+/// A rental. Km overage is derived (see src/lib/billing.ts), never stored.
+model Booking {
+  id            String  @id @default(cuid())
+  carId         String
+  customerName  String
+  customerPhone String
+
+  startAt DateTime
+  endAt   DateTime
+
+  /// Odometer at pickup.
+  startKm Int
+  /// Odometer at return. Null until the car comes back — billing shows "pending return".
+  endKm   Int?
+
+  /// Agreed per-day rate. Base charge = dailyRate x rental days, unless priceOverride is set.
+  dailyRate     Float
+  /// Optional flat negotiated total for the whole rental; wins over dailyRate x days.
+  priceOverride Float?
+
+  notes  String?
+  status String @default("RESERVED") // "RESERVED" | "ACTIVE" | "RETURNED" | "CANCELLED"
+
+  /// True when staff knowingly saved this booking despite an overlapping booking
+  /// for the same car. Surfaces as a visible conflict badge across the app.
+  conflictOverride Boolean @default(false)
+
+  createdById String?
+  createdBy   User?   @relation("BookingCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  car         Car     @relation(fields: [carId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([carId, startAt, endAt])
+  @@index([status])
+}
+
+/// Single-row table (id = 1) holding the tunable business rules.
+/// Defaults live in src/lib/config.ts and are the only place the numbers are written down.
+model Setting {
+  id               Int      @id @default(1)
+  freeKmPerDay     Int
+  overageRatePerKm Float
+  defaultDailyRate Float
+  currency         String
+  updatedAt        DateTime @updatedAt
+}
